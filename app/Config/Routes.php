@@ -37,6 +37,9 @@ $routes->get('/dashboard/profile', 'Dashboard::profile');
 //auth
 $routes->get('/auth/sign-in', 'Auth::signin');
 $routes->get('/auth/sign-up', 'Auth::signup');
+$routes->post('/auth/create', 'Auth::create');
+$routes->post('/auth/login', 'Auth::login');
+
 
 //guest
 $routes->get('/', 'Home::index');

@@ -9,19 +9,23 @@ class User extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'=>[
-                'type'=>'int',
-                'auto_increment'=>true,
-                'constraint'=>10
+            'id' => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+                'auto_increment' => true,
             ],
-            'email'=>[
-                'type'=>'varchar',
-                'constraint'=>100,
-                'null'=>false
+            'email' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
             ],
-            'password'=>[
-                'type'=>'varchar',
-                'null'=>false
+            'name' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'password' => [
+                'type' => 'TEXT',
+                'null' => true,
             ],
         ]);
         $this->forge->addKey('id', true);
