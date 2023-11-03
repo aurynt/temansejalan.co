@@ -1,49 +1,48 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\MenuModel;
+use App\Models\GalleryModel;
 
 class Home extends BaseController
 {
+    protected $menu,$gallery;
+    public function __construct() {
+        $this->menu = new MenuModel;
+        $this->gallery = new GalleryModel;
+    }
     public function index()
     {
         $data=[
-            'active'=>'home',
+            'active'=>'Home',
+            'menus'=>$this->menu->findAll(4),
+            'events'=>$this->gallery->where('event','1')->orderBy('id','DESC')->findAll(3),
+            'best'=>$this->menu->orderBy('price','DESC')->findAll(3),
         ];
         return view('home',$data);
     }
     public function menu()
     {
+        \helper('db');
         $data=[
-            'active'=>'menu',
+            'active'=>'Menu',
+            'menus'=>$this->menu->findAll()
         ];
         return view('menu',$data);
     }
     public function gallery()
     {
         $data=[
-            'active'=>'gallery',
+            'active'=>'Gallery',
+            'galleries'=>$this->gallery->findAll()
         ];
         return view('gallery',$data);
     }
     public function about()
     {
         $data=[
-            'active'=>'about',
+            'active'=>'About',
         ];
         return view('about',$data);
-    }
-    public function reservation()
-    {
-        $data=[
-            'active'=>'reservation',
-        ];
-        return view('reservation',$data);
-    }
-    public function contact()
-    {
-        $data=[
-            'active'=>'contact',
-        ];
-        return view('contact',$data);
     }
 }

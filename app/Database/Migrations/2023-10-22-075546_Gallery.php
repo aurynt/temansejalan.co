@@ -19,6 +19,18 @@ class Gallery extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'title' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'event' => [
+                'type'       => 'SMALLINT',
+                'constraint' => '1',
+            ],
+            'author' => [
+                'type'       => 'INT',
+                'constraint' => '5',
+            ],
             'information' => [
                 'type' => 'TEXT',
                 'null'=>true

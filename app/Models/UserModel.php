@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class User extends Model
+class UserModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'user';
@@ -24,24 +24,11 @@ class User extends Model
 
     // Validation
     protected $validationRules      = [
-        'name'=>'required',
-        'email'=>'required|valid_email',
-        'password'=>'required',
+        'name'=>'required|min_length[3]',
+        'email'=>'required|valid_email|is_unique[user.email]',
+        'password'=>'required|min_length[8]',
     ];
-    protected $validationMessages   = [
-        'name'=>[
-            'valid_email'=>'Email tidak vaalid',
-            'required'=>'Name wajib diisi'
-        ],
-        'email'=>[
-            'valid_email'=>'Email tidak vaalid',
-            'required'=>'Email wajib diisi'
-        ],
-        'password'=>[
-            'valid_email'=>'Email tidak vaalid',
-            'required'=>'Password wajib diisi'
-        ]
-    ];
+    protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
@@ -56,10 +43,9 @@ class User extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    protected function hashPassword(array $data)
-    {
+    protected function hashPassword(array $data){
         if (isset($data['data']['password'])) {
-            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_BCRYPT);
         }
 
         return $data;

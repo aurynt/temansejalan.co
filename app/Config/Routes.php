@@ -30,25 +30,41 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 //admin
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/dashboard/list', 'Dashboard::list');
-$routes->get('/dashboard/profile', 'Dashboard::profile');
+$routes->group('',['filter'=>'authcheck'],function($routes) {
+    $routes->get('/dashboard', 'Dashboard::index');
+    $routes->get('/dashboard/menus', 'Dashboard::listMenu');
+    $routes->get('/dashboard/activities', 'Dashboard::activity');
+    $routes->get('/dashboard/galleries', 'Dashboard::listGallery');
+    $routes->get('/dashboard/profile', 'Dashboard::profile');
+    $routes->get('/dashboard/menu', 'Dashboard::formMenu');
+    $routes->get('/dashboard/gallery', 'Dashboard::formGallery');
+    $routes->get('dashboard/menu/(:segment)', 'Menu::edit/$1');
+    $routes->get('dashboard/gallery/(:segment)', 'Gallery::edit/$1');
+    $routes->get('/menu/search', 'Dashboard::searchMenu');
+    //menu
+    $routes->post('/menu/add', 'Menu::create');
+    $routes->post('/menu/update', 'Menu::update');
+    $routes->post('/menu/delete', 'Menu::delete');
+    //gallery
+    $routes->post('/gallery/add', 'Gallery::create');
+    $routes->post('/gallery/update', 'Gallery::update');
+    $routes->post('/gallery/delete', 'Gallery::delete');
+    // signup
+    $routes->get('/auth/sign-up', 'Auth::signup');
+    $routes->get('/auth/sign-out', 'Auth::signout');
+    $routes->post('/auth/create', 'Auth::create');
+});
 
 //auth
-$routes->get('/auth/sign-in', 'Auth::signin');
-$routes->get('/auth/sign-up', 'Auth::signup');
-$routes->post('/auth/create', 'Auth::create');
-$routes->post('/auth/login', 'Auth::login');
-
-
-//guest
-$routes->get('/', 'Home::index');
-$routes->get('/menus', 'Home::menu');
-$routes->get('/gallery', 'Home::gallery');
-$routes->get('/reservation', 'Home::reservation');
-$routes->get('/about', 'Home::about');
-$routes->get('/contact', 'Home::contact');
-
+$routes->group('',['filter'=>'guestcheck'],function($routes) {
+    $routes->get('/auth/sign-in', 'Auth::signin');
+    $routes->post('/auth/login', 'Auth::login');
+    //guest
+    $routes->get('/', 'Home::index');
+    $routes->get('/menus', 'Home::menu');
+    $routes->get('/gallery', 'Home::gallery');
+    $routes->get('/about', 'Home::about');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

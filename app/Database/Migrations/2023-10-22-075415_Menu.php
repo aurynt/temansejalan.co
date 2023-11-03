@@ -15,12 +15,28 @@ class Menu extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name' => [
+            'menu' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'slug' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'photo' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'author' => [
+                'type'       => 'INT',
+                'constraint' => '5',
+            ],
+            'category' => [
+                'type'       => 'INT',
+                'constraint' => '5',
+            ],
             'price' => [
-                'type'       => 'int',
+                'type'       => 'INT',
                 'constraint' => '100',
             ],
             'description' => [

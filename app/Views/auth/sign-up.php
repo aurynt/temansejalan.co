@@ -4,15 +4,15 @@
 <?= csrf_field(); ?>
   <div class="input-group input-group-outline mb-3">
     <label class="form-label">Name</label>
-    <input name='name' type="text" class="form-control">
+    <input value="<?= old('name'); ?>" name='name' type="text" class="form-control">
   </div>
   <div class="input-group input-group-outline mb-3">
     <label class="form-label">Email</label>
-    <input name='email' type="email" class="form-control">
+    <input value="<?= old('email'); ?>" name='email' type="email" class="form-control">
   </div>
   <div class="input-group input-group-outline mb-3">
     <label class="form-label">Password</label>
-    <input name='password' type="password" class="form-control">
+    <input value="<?= old('password'); ?>" name='password' type="password" class="form-control">
   </div>
   <div class="input-group input-group-outline mb-3">
     <label class="form-label">Confirm Password</label>

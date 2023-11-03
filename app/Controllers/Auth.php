@@ -2,21 +2,27 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\UserModel;
 
 class Auth extends BaseController
 {
     protected $db;
     public function __construct()
     {
-        $this->db = new User();
+        $this->db = new UserModel();
     }
     public function signin()
     {
         $data = [
+            'auth' => service('auth'),
             'title' => 'Sign In'
         ];
         return view('auth/sign-in', $data);
+    }
+    public function signout()
+    {
+        session_destroy();
+        return redirect()->to(base_url());
     }
     public function signup()
     {
@@ -28,16 +34,15 @@ class Auth extends BaseController
     public function create()
     {
         helper(['form']);
-        $data = [
-            // 'id'=>Uuid::uuid4(),
-            'name'     => $this->request->getVar('name'),
-            'email'    => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
-        ];
-        if ($this->request->getVar('password') == $this->request->getVar('confirmPassword')) {
-            $res = $this->db->insert($data);
+        if ($this->request->getVar('confirmPassword') === $this->request->getVar('password')) {
+            $data = [
+                'name'     => $this->request->getVar('name'),
+                'email'    => $this->request->getVar('email'),
+                'password' => $this->request->getVar('password')
+            ];
+            $res = $this->db->save($data);
             if ($res) {
-                return redirect()->to('auth/sign-in');
+                return redirect()->to('dashboard');
             } else {
                 session()->setFlashdata('message', 'Something wrong');
                 return redirect()->to('auth/sign-up');
@@ -51,11 +56,15 @@ class Auth extends BaseController
     {
         helper(['form']);
         $email = $this->request->getVar('email');
-        $password = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
-        $res = $this->db->where('email', $email)->findAll(1);
-
+        $password = $this->request->getVar('password');
+        $res = $this->db->where('email', $email)->first();
         if ($res) {
-            if ($res[0]['password'] === $password) {
+            if (password_verify($password, $res['password'])) {
+                $session = \Config\Services::session();
+                $session->set('user_id', $res['id']);
+                $session->set('email', $res['email']);
+                $session->set('name', $res['name']);
+
                 return redirect()->to('dashboard');
             } else {
                 session()->setFlashdata('message', 'Wrong Password');

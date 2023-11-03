@@ -3,27 +3,11 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tasty &mdash; Free Website Template, Free HTML5 Template by freehtml5.co</title>
+	<title> <?= $active; ?> &mdash; Temansejalan</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="freehtml5.co" />
-
-	<!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
-  	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -68,12 +52,10 @@
 					</div>
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
-							<li class="<?= $active=='home'?'active':''; ?>"><a href="<?= base_url(); ?>">Home</a></li>
-							<li class="<?= $active=='menu'?'active':''; ?>"><a href="<?= base_url('menus'); ?>">Menu</a></li>
-							<li class="<?= $active=='gallery'?'active':''; ?>"><a href="<?= base_url('gallery'); ?>">Gallery</a></li>
-							<li class="<?= $active=='reservation'?'active':''; ?>"><a href="<?= base_url('reservation'); ?>">Reservation</a></li>
-							<li class="<?= $active=='about'?'active':''; ?>"><a href="<?= base_url('about'); ?>">About</a></li>
-							<li class="<?= $active=='contact'?'active':''; ?>"><a href="<?= base_url('contact'); ?>">Contact</a></li>
+							<li class="<?= $active=='Home'?'active':''; ?>"><a href="<?= base_url(); ?>">Home</a></li>
+							<li class="<?= $active=='Menu'?'active':''; ?>"><a href="<?= base_url('menus'); ?>">Menu</a></li>
+							<li class="<?= $active=='Gallery'?'active':''; ?>"><a href="<?= base_url('gallery'); ?>">Gallery</a></li>
+							<li class="<?= $active=='About'?'active':''; ?>"><a href="<?= base_url('about'); ?>">About</a></li>
 						</ul>
 					</div>
 				</div>
@@ -100,6 +82,43 @@
 
 	<?= $this->renderSection('content');?>
 
+	<div id="fh5co-featured-testimony" class="fh5co-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 fh5co-heading animate-box">
+					<h2>Testimony</h2>
+					<div class="row">
+						<div class="col-md-6">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-5 animate-box img-to-responsive">
+						<img src="<?= base_url('assets/'); ?>images/person_1.jpg" alt="">
+				</div>
+				<div class="col-md-7 animate-box">
+					<blockquote>
+						<p> &ldquo; Quantum ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam. &rdquo;</p>
+						<p class="author"><cite>&mdash; Jane Smith</cite></p>
+					</blockquote>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div id="fh5co-started" class="fh5co-section animate-box" style="background-image: url(<?= base_url('assets/'); ?>images/hero_1.jpeg);" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+				<h2>Book a Table</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae enim quae vitae cupiditate, sequi quam ea id dolor reiciendis consectetur repudiandae. Rem quam, repellendus veniam ipsa fuga maxime odio? Eaque!</p>
+				<p><a href="<?= base_url('reservation'); ?>" class="btn btn-primary btn-outline">Book Now</a></p>
+			</div>
+		</div>
+	</div>
+</div>
 	<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
 		<div class="container">
 			<div class="row row-pb-md">
@@ -117,24 +136,12 @@
 					</ul>
 				</div>
 
-				<div class="col-md-2 col-md-push-1 fh5co-widget">
-					<h4>Categories</h4>
-					<ul class="fh5co-footer-links">
-						<li><a href="#">Landing Page</a></li>
-						<li><a href="#">Real Estate</a></li>
-						<li><a href="#">Personal</a></li>
-						<li><a href="#">Business</a></li>
-						<li><a href="#">e-Commerce</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-4 col-md-push-1 fh5co-widget">
+				<div class="col-md-6 col-md-push-1 fh5co-widget">
 					<h4>Contact Information</h4>
 					<ul class="fh5co-footer-links">
 						<li>198 West 21th Street, <br> Suite 721 New York NY 10016</li>
 						<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
 						<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-						<li><a href="http://https://freehtml5.co">freehtml5.co</a></li>
 					</ul>
 				</div>
 
@@ -143,8 +150,9 @@
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
 					<p>
-						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
-						<small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+						<small class="block">&copy; 2023 Temansecalan.co. All Rights Reserved.</small> 
+						<small class="block">Designed by <a href="
+						3" target="_blank">Auryncode</a></small>
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">
