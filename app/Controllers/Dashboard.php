@@ -36,7 +36,7 @@ class Dashboard extends BaseController{
     public function listMenu(){
         $data=[
             'active'=>'table',
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'menus'=>$this->menu->join('user','user.id=menu.author')->paginate(5),
             'pager'=>$this->menu->pager,
         ];
@@ -46,7 +46,7 @@ class Dashboard extends BaseController{
         $q=$this->request->getvar('q');
         $data=[
             'active'=>'table',
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'menus'=>$this->menu->like('menu',$q)->join('user','user.id=menu.author')->paginate(5),
             'pager'=>$this->menu->pager,
         ];
@@ -54,7 +54,7 @@ class Dashboard extends BaseController{
     }
     public function listGallery(){
         $data=[
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'active'=>'table',
             'galleries'=>$this->gallery->join('user','user.id=gallery.author')->paginate(5),
             'pager'=>$this->gallery->pager,
@@ -63,21 +63,21 @@ class Dashboard extends BaseController{
     }
     public function formMenu(){
         $data=[
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'active'=>'form',
         ];
         return view('admin/form/menu',$data);
     }
     public function formGallery(){
         $data=[
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'active'=>'form',
         ];
         return view('admin/form/gallery',$data);
     }
     public function profile(){
         $data=[
-            'activities'=>$this->activity->join('user','user.id=activity.author')->findAll(),
+            'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
             'active'=>'profile'
         ];
         return view('admin/profile',$data);

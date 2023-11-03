@@ -8,8 +8,11 @@ $pager->setSurroundCount(2);
 	<ul class="pagination justify-content-center">
 		<?php if ($pager->hasPrevious()) : ?>
 			<li class="page-item font-weight-bold">
-				<a class="page-link" href="<?= $pager->getPrevious() ?>" aria-label="<?= lang('Pager.previous') ?>">
-                &#8701
+				<a class="page-link" href="<?= $pager->getPrevious() ?>" aria-label="Next">
+					<span class="material-icons">
+					keyboard_arrow_right
+					</span>
+					<span class="sr-only">Next</span>
 				</a>
 			</li>
 		<?php endif ?>
@@ -24,10 +27,15 @@ $pager->setSurroundCount(2);
 
 		<?php if ($pager->hasNext()) : ?>
 			<li class="page-item font-weight-bold">
-				<a class="page-link" href="<?= $pager->getNext() ?>" aria-label="<?= lang('Pager.next') ?>">
-                &#8702
+				<a class="page-link" href="<?= $pager->getNext() ?>" aria-label="Next">
+					<span class="material-icons">
+					keyboard_arrow_right
+					</span>
+					<span class="sr-only">Next</span>
 				</a>
 			</li>
+			
+
 		<?php endif ?>
 	</ul>
 </nav>

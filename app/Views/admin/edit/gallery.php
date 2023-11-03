@@ -1,5 +1,6 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
+<?php var_dump($datas) ?>
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -26,10 +27,34 @@
                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
                 <div class="d-flex justify-content-end gap-4">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Delete
+                    </button>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title font-weight-normal text-danger" id="exampleModalLabel">Delete</h5>
+                        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p class="font-weight-semibold">Serius mau delete gallery</p>
+                      </div>
+                      <div class="modal-footer">
+                        <form action="<?= base_url('gallery/delete'); ?>" method="post">
+                          <?= csrf_field(); ?>
+                          <input name="id" type="hidden" value="<?= $datas['id']; ?>">
+                          <button type="submit">Delete</button>
+                        </form>
+                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>                          </div>
+                    </div>
+                  </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>

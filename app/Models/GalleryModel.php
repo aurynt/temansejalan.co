@@ -59,7 +59,7 @@ class GalleryModel extends Model
         date_default_timezone_set('Asia/Jakarta');
         $db = new ActivityModel;
         $db->insert([
-            'author' => $data['data']['author'],
+            'author' => \session()->get('user_id'),
             'table' => 'gallery',
             'description' => 'menghapus gallery',
             'created_at' => \date('Y-m-d H:i:s')
