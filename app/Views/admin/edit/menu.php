@@ -20,7 +20,8 @@
                 <div class="form-group mb-3">
                   <label for="exampleInputEmail1">Harga</label>
                   <input value="<?= old('price',$datas['price']); ?>"  name="price" type="text" class="form-control border border-primary px-4 p-2">
-                  <small class="form-text text-danger"><?= $errors['price']??''; ?></small>                </div>
+                  <small class="form-text text-danger"><?= $errors['price']??''; ?></small>                
+                </div>
                 <div class="form-group mb-3">
                   <label for="exampleInputEmail1">Deskripsi</label>
                   <textarea class="form-control border border-primary px-4 p-2" name="description" rows="5"><?= old('description',$datas['description']);; ?></textarea>
@@ -31,8 +32,9 @@
                   <div class="card mb-3" style="width:153px;height: 102px;">
                         <img style="width:153px;height: 102px;" src="<?= base_url('assets/') . 'uploads/menus/' . $datas['photo']; ?>" class="rounded" alt="<?= $datas['menu']; ?>">
                     </div>
-                  <input name="photo" type="file" class="form-control border border-primary px-4 p-2">
-                  <small class="form-text text-danger"><?= $errors['photo']??''; ?></small>                </div>
+                  <input value="<?= old('photo',$datas['photo']); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
+                  <small class="form-text text-danger"><?= $errors['photo']??''; ?></small>                
+                </div>
                 <div class="d-flex justify-content-end gap-4">
                   <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Delete

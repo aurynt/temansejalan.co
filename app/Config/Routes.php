@@ -35,7 +35,6 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->get('/dashboard/menus', 'Dashboard::listMenu');
     $routes->get('/dashboard/activities', 'Dashboard::activity');
     $routes->get('/dashboard/galleries', 'Dashboard::listGallery');
-    $routes->get('/dashboard/users', 'Dashboard::listUser');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
     $routes->get('/dashboard/menu', 'Dashboard::formMenu');
     $routes->get('/dashboard/gallery', 'Dashboard::formGallery');
@@ -47,7 +46,8 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->post('/menu/update', 'Menu::update');
     $routes->post('/menu/delete', 'Menu::delete');
     //user
-    $routes->post('/user/delete', 'Auth::delete');
+    $routes->post('/user/delete', 'Auth::delete',['filter'=>'rootcheck']);
+    $routes->get('/dashboard/users', 'Dashboard::listUser',['filter'=>'rootcheck']);
     //gallery
     $routes->post('/gallery/add', 'Gallery::create');
     $routes->post('/gallery/update', 'Gallery::update');
@@ -61,6 +61,10 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
 //auth
 $routes->group('',['filter'=>'guestcheck'],function($routes) {
     $routes->get('/auth/sign-in', 'Auth::signin');
+    $routes->get('/auth/forgot-password', 'Auth::forgotPassword');
+    $routes->get('/auth/reset-password', 'Auth::resetPassword');
+    $routes->post('/auth/reset-link', 'Auth::resetLink');
+    $routes->post('/auth/reset', 'Auth::reset');
     $routes->post('/auth/login', 'Auth::login');
     //guest
     $routes->get('/', 'Home::index');
@@ -68,6 +72,10 @@ $routes->group('',['filter'=>'guestcheck'],function($routes) {
     $routes->get('/gallery', 'Home::gallery');
     $routes->get('/about', 'Home::about');
 });
+$routes->group('',['filter'=>'guestcheck'],function($routes) {
+
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

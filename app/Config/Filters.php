@@ -22,7 +22,8 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'authcheck'     => \App\Filters\Auth::class,
-        'guestcheck'     => \App\Filters\Guest::class
+        'guestcheck'     => \App\Filters\Guest::class,
+        'rootcheck'     => \App\Filters\Root::class
     ];
 
     /**
