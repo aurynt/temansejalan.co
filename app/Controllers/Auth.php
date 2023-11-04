@@ -41,15 +41,13 @@ class Auth extends BaseController
                 'password' => $this->request->getVar('password')
             ];
             $res = $this->db->save($data);
-            if ($res) {
-                return redirect()->to('dashboard');
-            } else {
-                session()->setFlashdata('message', 'Something wrong');
-                return redirect()->to('auth/sign-up');
-            }
+            if (!$res) {
+                return redirect()->back()->withInput()->with('errors',$this->db->errors());
+            } 
+            return redirect()->back()->with('succes','succesfuly created account');
         } else {
-            \session()->setFlashdata('message', 'Password do not match');
-            return redirect()->to('auth/sign-up');
+            \session()->setFlashdata('message', 'Password do not match',2);
+            return redirect()->back()->withInput();
         }
     }
     public function login()
@@ -68,11 +66,18 @@ class Auth extends BaseController
                 return redirect()->to('dashboard');
             } else {
                 session()->setFlashdata('message', 'Wrong Password');
-                return redirect()->to('auth/sign-in');
+                return redirect()->to('auth/sign-in')->withInput();
             }
         } else {
             session()->setFlashdata('message', 'Email not found');
-            return redirect()->to('auth/sign-in');
+            return redirect()->to('auth/sign-in')->withInput();
         }
+    }
+    public function delete()
+    {
+        helper('form');
+        $email = $this->request->getVar('email');
+        $res = $this->db->where('email',$email)->delete();
+        return \redirect()->to('dashboard/users')->with('succes','succesfuly deleted user');
     }
 }

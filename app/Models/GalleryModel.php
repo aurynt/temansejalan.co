@@ -24,7 +24,7 @@ class GalleryModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'image'=>'required',
+        'image'=>'required|mime_in[image,image/png,image/jpeg,image/jpg]|uploaded[image]',
         'information'=>'required_with[event]',
         'title'=>'required_with[event]',
     ];
@@ -40,8 +40,8 @@ class GalleryModel extends Model
     protected $afterUpdate    = ['addToActivityUpdate'];
     protected $beforeFind     = [];
     protected $afterFind      = [];
-    protected $beforeDelete   = ['addToActivityDelete'];
-    protected $afterDelete    = [];
+    protected $beforeDelete   = [];
+    protected $afterDelete    = ['addToActivityDelete'];
 
     protected function addToActivityInsert(array $data)
     {
@@ -49,7 +49,7 @@ class GalleryModel extends Model
         $db = new ActivityModel;
         $db->insert([
             'author' => $data['data']['author'],
-            // 'table' => 'gallery',
+            'table' => 'gallery',
             'description' => 'menambahkan gallery',
             'created_at' => \date('Y-m-d H:i:s')
         ]);

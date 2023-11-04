@@ -1,6 +1,6 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
-<?php var_dump($datas) ?>
+<?php $errors=session()->get('errors'); ?>
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -13,21 +13,40 @@
             <form enctype="multipart/form-data" class="p-2" action="<?= base_url('gallery/update'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <input name="id" type="hidden" value="<?= $datas['id']; ?>">
-              <div class="form-group mb-3">
+                <div class="form-group mb-3">
+                  <label for="exampleInputEmail1">Title</label>
+                  <input value="<?= old('title',$datas['title']); ?>" name="title" type="text" class="form-control px-4 p-2 border border-primary">
+                  <small id="emailHelp" class="form-text text-danger"><?= $errors['title']??''; ?></small>
+                </div>
+                <div class="form-group mb-3">
                   <label for="exampleInputEmail1">Information</label>
                   <textarea name="information" class="form-control border border-primary px-4 p-2" rows="5"><?= old('information',$datas['information']);; ?></textarea>
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
+                  <small id="emailHelp" class="form-text text-danger"><?= $errors['information']??''; ?></small>                </div>
                 <div class="form-group mb-3">
                   <label for="exampleInputEmail1">Foto</label>
                     <div class="card mb-3" style="width:153px;height: 102px;">
                         <img style="width:153px;height: 102px;" src="<?= base_url('assets/') . 'uploads/galleries/' . $datas['image']; ?>" class="rounded" alt="gallery image">
                     </div>
-                  <input value="<?= old('image',$datas['image']); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
-                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  <input value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
+                  <small id="emailHelp" class="form-text text-danger"><?= $errors['image']??''; ?></small>
                 </div>
+                <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Tampilkan di event</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="event" id="exampleRadios1" value="1" <?= $datas['event']=='1'?'checked':''; ?>>
+                <label class="form-check-label" for="exampleRadios1">
+                    Ya
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="event" id="exampleRadios2" value="0" <?= $datas['event']=='0'?'checked':''; ?>>
+                <label class="form-check-label" for="exampleRadios2">
+                    Tidak
+                </label>
+            </div>
+        </div>
                 <div class="d-flex justify-content-end gap-4">
-                    <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Delete
                     </button>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -49,7 +68,7 @@
                         <form action="<?= base_url('gallery/delete'); ?>" method="post">
                           <?= csrf_field(); ?>
                           <input name="id" type="hidden" value="<?= $datas['id']; ?>">
-                          <button type="submit">Delete</button>
+                          <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>                          </div>
                     </div>

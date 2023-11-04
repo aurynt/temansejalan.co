@@ -34,7 +34,7 @@
     <div class="w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'dashboard' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard'); ?>">
+          <a class="nav-link text-white <?= $active['current'] === 'dashboard' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard'); ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -44,7 +44,7 @@
         <details>
           <summary class="d-flex">
             <div class="nav-item">
-              <a class="nav-link text-white <?= $active === 'table' ? 'active bg-gradient-primary' : ''; ?>">
+              <a class="nav-link text-white <?= $active['page'] === 'table' ? 'active bg-gradient-primary' : ''; ?>">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">format_list_bulleted</i>
                 </div>
@@ -62,11 +62,18 @@
               <span class="nav-link-text ms-1 ps-4">Galleries</span>
             </a>
           </li>
+          <?php if(session()->get('email')==='root@temansejalan.com'): ?>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="<?= base_url('dashboard/users'); ?>">
+                <span class="nav-link-text ms-1 ps-4">Users</span>
+              </a>
+            </li>
+          <?php endif; ?>
         </details>
         <details>
           <summary class="d-flex">
             <div class="nav-item">
-              <a class="nav-link text-white <?= $active === 'form' ? 'active bg-gradient-primary' : ''; ?>">
+              <a class="nav-link text-white <?= $active['page'] === 'form' ? 'active bg-gradient-primary' : ''; ?>">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">table_view</i>
                 </div>
@@ -85,65 +92,27 @@
             </a>
           </li>
         </details>
-        <!-- <li class="nav-item"><a class="nav-link " data-bs-toggle="collapse" data-bs-target="#navDashboard" aria-expanded="true" aria-controls="navDashboard" href="/#"><i class="nav-icon fe fe-lock me-2"></i> Authentication</a></li>
-        <li class="nav-item collapse show" style=""><ul class="nav flex-column list-group"><li class="nav-item"><a class="nav-link " href="/authentication/sign-in">Sign In</a></li><li class="nav-item"><a class="nav-link " href="/authentication/sign-up">Sign Up</a></li><li class="nav-item"><a class="nav-link " href="/authentication/forget-password">Forget Password</a></li></ul></li> -->
-        <!-- <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Table pages</h6>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'menus' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/menus'); ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">Menus</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'galleries' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/galleries'); ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">Galleries</span>
-          </a>
-        </li> -->
-        <!-- <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Form pages</h6>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'form menu' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/menu'); ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">Menu</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'form gallery' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/gallery'); ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
-            </div>
-            <span class="nav-link-text ms-1">Gallery</span>
-          </a>
-        </li> -->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white <?= $active === 'profile' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/profile'); ?>">
+          <a class="nav-link text-white <?= $active['page'] === 'profile' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard/profile'); ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="<?= base_url('auth/sign-up'); ?>">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
-        </li>
+        <?php if(session()->get('email')==='root@temansejalan.com'): ?>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="<?= base_url('auth/sign-up'); ?>">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">assignment</i>
+              </div>
+              <span class="nav-link-text ms-1">Sign Up</span>
+            </a>
+          </li>
+        <?php endif; ?>
       </ul>
     </div>
   </aside>
@@ -154,9 +123,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="<?= base_url('dashboard'); ?>">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page"><?= $active; ?></li>
+            <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page"><?= $active['page']; ?></li>
           </ol>
-          <h6 class="font-weight-bolder mb-0 text-capitalize"><?= $active; ?></h6>
+          <h6 class="font-weight-bolder mb-0 text-capitalize"><?= $active['current']; ?></h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -198,11 +167,13 @@
                     <a class="dropdown-item border-radius-md" href="javascript:;">
                       <div class="d-flex py-1">
                         <div class="my-auto">
-                          <img src="<?= base_url('assets/admin/'); ?>img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                          <div class="text-black h2 text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">person</i>
+                          </div>
                         </div>
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold"><?= $activity['name']; ?></span> <?= $activity['description']; ?>
+                          <span class="font-weight-bold"><?= $activity['email']; ?></span> <?= $activity['description']; ?>
                           </h6>
                           <p class="text-xs text-secondary mb-0">
                             <i class="fa fa-clock me-1"></i>
@@ -247,6 +218,10 @@
   <script src="<?= base_url('assets/admin/'); ?>js/plugins/smooth-scrollbar.min.js"></script>
   <script src="<?= base_url('assets/admin/'); ?>js/plugins/chartjs.min.js"></script>
   <script>
+    setTimeout(function() {
+      document.getElementById("alert").style.display = "none";
+    }, 2000);
+
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {

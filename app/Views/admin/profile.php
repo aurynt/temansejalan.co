@@ -12,7 +12,7 @@
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
-              <h5 class="mb-1">
+              <h5 class="mb-1 text-capitalize">
                 <?= session()->name; ?>
               </h5>
               <p class="mb-0 font-weight-normal text-sm">
@@ -55,7 +55,7 @@
                   </p>
                   <hr class="horizontal gray-light my-4">
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <?= session()->name; ?></li>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm text-capitalize"><strong class="text-dark">Full Name:</strong> &nbsp; <?= session()->name; ?></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; <?= session()->email; ?></li>
                   </ul>
                 </div>

@@ -35,6 +35,7 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->get('/dashboard/menus', 'Dashboard::listMenu');
     $routes->get('/dashboard/activities', 'Dashboard::activity');
     $routes->get('/dashboard/galleries', 'Dashboard::listGallery');
+    $routes->get('/dashboard/users', 'Dashboard::listUser');
     $routes->get('/dashboard/profile', 'Dashboard::profile');
     $routes->get('/dashboard/menu', 'Dashboard::formMenu');
     $routes->get('/dashboard/gallery', 'Dashboard::formGallery');
@@ -45,6 +46,8 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->post('/menu/add', 'Menu::create');
     $routes->post('/menu/update', 'Menu::update');
     $routes->post('/menu/delete', 'Menu::delete');
+    //user
+    $routes->post('/user/delete', 'Auth::delete');
     //gallery
     $routes->post('/gallery/add', 'Gallery::create');
     $routes->post('/gallery/update', 'Gallery::update');

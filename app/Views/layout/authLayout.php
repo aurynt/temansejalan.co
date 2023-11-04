@@ -98,6 +98,10 @@
   <script src="<?= base_url('assets/admin/'); ?>js/plugins/perfect-scrollbar.min.js"></script>
   <script src="<?= base_url('assets/admin/'); ?>js/plugins/smooth-scrollbar.min.js"></script>
   <script>
+    setTimeout(function() {
+      document.getElementById("alert").style.display = "none";
+    }, 2000);
+
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

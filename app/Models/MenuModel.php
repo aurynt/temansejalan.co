@@ -24,10 +24,10 @@ class MenuModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'menu' => 'min_length[3]|required',
+        'menu' => 'min_length[3]|required|is_unique[menu]',
         'price' => 'required',
         'description' => 'required',
-        'photo' => 'required',
+        'photo' => 'required|mime_in[photo,image/png,image/jpeg,image/jpg]|uploaded[photo]',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -51,18 +51,19 @@ class MenuModel extends Model
         $db->insert([
             'author' => $data['data']['author'],
             'table' => 'menu',
-            'description' => ' menambahkan menu ' . $data['data']['menu'],
+            'description' => 'menambahkan menu '. $data['data']['menu'],
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }
     protected function addToActivityDelete(array $data)
     {
         date_default_timezone_set('Asia/Jakarta');
+        var_dump($data);
         $db = new ActivityModel;
         $db->insert([
-            'author' => $data['data']['author'],
+            'author' => \session()->get('user_id'),
             'table' => 'menu',
-            'description' => ' menghapus menu ' . $data['data']['menu'],
+            'description' => 'menghapus menu',
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }
@@ -73,7 +74,7 @@ class MenuModel extends Model
         $db->insert([
             'author' => $data['data']['author'],
             'table' => 'menu',
-            'description' => ' mengupdate menu ' . $data['data']['menu'],
+            'description' => 'mengupdate menu ' . $data['data']['menu'],
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }

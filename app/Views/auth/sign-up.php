@@ -1,19 +1,44 @@
 <?= $this->extend('layout/authLayout'); ?>
 <?= $this->section('content'); ?>
+<?php $errors=session()->get('errors'); ?>
+
+<?php if(session()->getFlashdata('message')): ?>
+  <div id="alert" class="alert alert-danger text-white" role="alert">
+    <?= session()->getFlashdata('message'); ?>
+  </div>
+<?php endif; ?>
+
+<?php if(session()->get('succes')): ?>
+  <div id="alert" class="alert alert-success text-white" role="alert">
+    <?= session()->get('succes'); ?>
+  </div>
+<?php endif; ?>
+
 <form method='post' action="<?= base_url('auth/create'); ?>">
 <?= csrf_field(); ?>
-  <div class="input-group input-group-outline mb-3">
+<div class="mb-3">
+  <div class="input-group input-group-outline">
     <label class="form-label">Name</label>
     <input value="<?= old('name'); ?>" name='name' type="text" class="form-control">
   </div>
-  <div class="input-group input-group-outline mb-3">
+  <small class="form-text text-danger"><?= $errors['name']??''; ?></small>
+</div>
+<div class="mb-3">
+
+  <div class="input-group input-group-outline">
     <label class="form-label">Email</label>
     <input value="<?= old('email'); ?>" name='email' type="email" class="form-control">
   </div>
-  <div class="input-group input-group-outline mb-3">
+  <small class="form-text text-danger"><?= $errors['email']??''; ?></small>
+</div>
+<div class="mb-3">
+
+  <div class="input-group input-group-outline">
     <label class="form-label">Password</label>
     <input value="<?= old('password'); ?>" name='password' type="password" class="form-control">
   </div>
+  <small class="form-text text-danger"><?= $errors['password']??''; ?></small>
+</div>
   <div class="input-group input-group-outline mb-3">
     <label class="form-label">Confirm Password</label>
     <input name='confirmPassword' type="password" class="form-control">

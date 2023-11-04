@@ -1,5 +1,6 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
+<?php $errors=session()->get('errors'); ?>
 <div class="row">
 <div class="col-12">
     <div class="card my-4">
@@ -14,17 +15,17 @@
         <div class="form-group mb-3">
             <label for="exampleInputEmail1">Title</label>
             <input value="<?= old('title'); ?>" name="title" type="text" class="form-control px-4 p-2 border border-primary">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            <small id="emailHelp" class="form-text text-danger"><?= $errors['title']??''; ?></small>
         </div>
         <div class="form-group mb-3">
             <label for="exampleInputEmail1">Information</label>
             <textarea name="information" class="form-control border border-primary px-4 p-2" rows="5"><?= old('information'); ?></textarea>
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            <small id="emailHelp" class="form-text text-danger"><?= $errors['information']??''; ?></small>
         </div>
         <div class="form-group mb-3">
             <label for="exampleInputEmail1">Foto</label>
             <input value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
-            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+            <small id="emailHelp" class="form-text text-danger"><?= $errors['image']??''; ?></small>
         </div>
         <div class="form-group mb-3">
             <label for="exampleInputEmail1">Tampilkan di event</label>
