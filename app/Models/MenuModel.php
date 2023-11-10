@@ -27,7 +27,7 @@ class MenuModel extends Model
         'menu' => 'min_length[3]|required|is_unique[menu]',
         'price' => 'required',
         'description' => 'required',
-        'photo' => 'required|mime_in[photo,image/png,image/jpeg,image/jpg]|uploaded[photo]',
+        'photo' => 'required|',//ext_in[photo,jpeg,png,jpg]|uploaded[photo]',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

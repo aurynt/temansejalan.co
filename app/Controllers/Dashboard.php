@@ -110,6 +110,7 @@ class Dashboard extends BaseController{
     public function profile(){
         $data=[
             'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at','DESC')->findAll(5),
+            'events'=>$this->gallery->where('event','1')->orderBy('id','DESC')->findAll(4),
             'active'=>[
                 'page'=>'profile',
                 'current'=>'profile',

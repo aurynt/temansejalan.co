@@ -33,13 +33,13 @@
                 <div class="form-group mb-3">
             <label for="exampleInputEmail1">Tampilkan di event</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="event" id="exampleRadios1" value="1" <?= $datas['event']=='1'?'checked':''; ?>>
+                <input class="form-check-input" type="radio" name="event" id="exampleRadios1" value="1" <?= old('event',$datas['event'])=='1'?'checked':''; ?>>
                 <label class="form-check-label" for="exampleRadios1">
                     Ya
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="event" id="exampleRadios2" value="0" <?= $datas['event']=='0'?'checked':''; ?>>
+                <input class="form-check-input" type="radio" name="event" id="exampleRadios2" value="0" <?= old('event',$datas['event'])=='0'?'checked':''; ?>>
                 <label class="form-check-label" for="exampleRadios2">
                     Tidak
                 </label>

@@ -10,7 +10,7 @@ class User extends Seeder
     {
         $data=[
             'name'=>'root',
-            'email'=>'root@temansejalan.com',
+            'email'=>'Kantin.temansejalan@gmail.com',
             'password'=>password_hash('admintemansejalan',PASSWORD_BCRYPT),
         ];
         $this->db->table('user')->insert($data);

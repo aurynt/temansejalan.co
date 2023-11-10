@@ -24,7 +24,7 @@ class GalleryModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'image'=>'required|mime_in[image,image/png,image/jpeg,image/jpg]|uploaded[image]',
+        'image'=>'required|',//ext_in[image,jpeg,png,jpg]|is_image[image]|mime_in[image,image/png,image/jpeg,image/jpg]',
         'information'=>'required_with[event]',
         'title'=>'required_with[event]',
     ];

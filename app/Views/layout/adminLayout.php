@@ -62,7 +62,7 @@
               <span class="nav-link-text ms-1 ps-4">Galleries</span>
             </a>
           </li>
-          <?php if(session()->get('email')==='root@temansejalan.com'): ?>
+          <?php if(session()->get('email')==='Kantin.temansejalan@gmail.com'): ?>
             <li class="nav-item">
               <a class="nav-link text-white" href="<?= base_url('dashboard/users'); ?>">
                 <span class="nav-link-text ms-1 ps-4">Users</span>
@@ -103,7 +103,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
-        <?php if(session()->get('email')==='root@temansejalan.com'): ?>
+        <?php if(session()->get('email')==='Kantin.temansejalan@gmail.com'): ?>
           <li class="nav-item">
             <a class="nav-link text-white " href="<?= base_url('auth/sign-up'); ?>">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -152,19 +152,32 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+            <li class="nav-item dropdown px-3 pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell cursor-pointer"></i>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <?php if($activities==null): ?>
+                  <li>
+                    <a class="dropdown-item border-radius-md" href="<?= base_url('dashboard/activities'); ?>">
+                      <div class="d-flex py-1">
+                        <div class="my-auto">
+                          <div class="text-black h2 text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">hourglass_empty</i>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                            There's no activities found
+                          </h6>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <?php endif;?>
                 <?php foreach($activities as $activity):?>  
                   <li class="mb-2">
-                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <a class="dropdown-item border-radius-md" href="<?= base_url('dashboard/activities'); ?>">
                       <div class="d-flex py-1">
                         <div class="my-auto">
                           <div class="text-black h2 text-center me-2 d-flex align-items-center justify-content-center">
@@ -202,7 +215,7 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Auryncode</a>
+                <a href="" class="font-weight-bold" target="_blank">Auryncode</a>
                 for a better web.
               </div>
             </div>

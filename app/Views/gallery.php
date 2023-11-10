@@ -14,13 +14,12 @@
 
 			<?php $i = 0;
 			foreach ($galleries as $gallery) : ?>
-				<?php if ($i % 5 == 2) : ?>
+				<?php if ($i % 4 == 1) : ?>
 					<div class="col-md-6 col-sm-6 fh5co-gallery_item">
 						<div class="fh5co-bg-img fh5co-gallery_big" style="background-image: url(<?= base_url('assets/uploads/galleries/'); ?><?= $gallery['image']; ?>);" data-trigger="zoomerang"></div>
 					</div>
 				<?php else : ?>
 					<div class="col-md-3 col-sm-3 fh5co-gallery_item">
-						<div class="fh5co-bg-img" style="background-image: url(<?= base_url('assets/uploads/galleries/'); ?><?= $gallery['image']; ?>);" data-trigger="zoomerang"></div>
 						<div class="fh5co-bg-img" style="background-image: url(<?= base_url('assets/uploads/galleries/'); ?><?= $gallery['image']; ?>);" data-trigger="zoomerang"></div>
 					</div>
 				<?php endif; ?>

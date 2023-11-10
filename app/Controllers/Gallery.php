@@ -35,9 +35,9 @@ class Gallery extends BaseController
         $name = date('YmdHis') . '.' . $photo->getExtension();
         $data = [
             'image' => $name,
-            'information' => $this->request->getVar('information'),
-            'title' => $this->request->getVar('title'),
-            'event' => $this->request->getVar('event'),
+            'information' => $this->request->getPost('information'),
+            'title' => $this->request->getPost('title'),
+            'event' => $this->request->getPost('event'),
             'author' => session()->get('user_id'),
         ];
         $res = $this->db->save($data);
@@ -50,27 +50,34 @@ class Gallery extends BaseController
     public function update()
     {
         helper('form', 'session');
+        $gallery=$this->db->find($this->request->getPost('id'));
         $photo = $this->request->getFile('image');
-        $name = date('YmdHis') . '.' . $photo->getExtension();
+        $name = $gallery['image'];
+
+        if (!$photo->hasMoved() && $photo->isValid()) {
+            $name = date('YmdHis') . '.' . $photo->getExtension();
+            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
+        }
+
         $data = [
-            'id' => $this->request->getVar('id'),
+            'id' => $this->request->getPost('id'),
             'image' => $name,
-            'information' => $this->request->getVar('information'),
-            'title' => $this->request->getVar('title'),
-            'event' => $this->request->getVar('event'),
+            'information' => $this->request->getPost('information'),
+            'title' => $this->request->getPost('title'),
+            'event' => $this->request->getPost('event'),
             'author' => session()->get('user_id'),
         ];
         $res = $this->db->save($data);
         if (!$res) {
             return \redirect()->back()->withInput()->with('errors',$this->db->errors());
         }
-        $photo->move(ROOTPATH . 'public/assets/uploads/galleries', $name);
         return \redirect()->back();
     }
+
     public function delete()
     {
         helper('form');
-        $id = $this->request->getVar('id');
+        $id = $this->request->getPost('id');
         $res = $this->db->delete($id);
         return \redirect()->to('dashboard/galleries');
     }

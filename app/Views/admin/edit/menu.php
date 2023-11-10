@@ -46,13 +46,13 @@
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title font-weight-normal text-danger" id="exampleModalLabel">Delete</h5>
+                        <h5 class="modal-title font-weight-bold text-danger" id="exampleModalLabel">Delete</h5>
                         <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        <p class="font-weight-semibold">Serius mau delete gallery</p>
+                        <p class="font-weight-semibold">Serius mau delete menu??</p>
                       </div>
                       <div class="modal-footer">
                         <form action="<?= base_url('menu/delete'); ?>" method="post">
