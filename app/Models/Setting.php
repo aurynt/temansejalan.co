@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MenuModel extends Model
+class Setting extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'menu';
+    protected $table            = 'setting';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['menu', 'price', 'description', 'author', 'photo', 'slug', 'slide'];
+    protected $allowedFields    = ['description', 'email', 'instagram', 'facebook', 'whatsapp', 'image'];
 
     // Dates
     protected $useTimestamps = false;
@@ -31,45 +31,22 @@ class MenuModel extends Model
     // Callbacks
     protected $allowCallbacks = true;
     protected $beforeInsert   = [];
-    protected $afterInsert    = ['addToActivityInsert'];
+    protected $afterInsert    = [];
     protected $beforeUpdate   = [];
     protected $afterUpdate    = ['addToActivityUpdate'];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
-    protected $afterDelete    = ['addToActivityDelete'];
+    protected $afterDelete    = [];
 
-    protected function addToActivityInsert(array $data)
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        $db = new ActivityModel;
-        $db->insert([
-            'author' => $data['data']['author'],
-            'table' => 'menu',
-            'description' => 'menambahkan menu ' . $data['data']['menu'],
-            'created_at' => \date('Y-m-d H:i:s')
-        ]);
-    }
-    protected function addToActivityDelete(array $data)
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        var_dump($data);
-        $db = new ActivityModel;
-        $db->insert([
-            'author' => \session()->get('user_id'),
-            'table' => 'menu',
-            'description' => 'menghapus menu',
-            'created_at' => \date('Y-m-d H:i:s')
-        ]);
-    }
     protected function addToActivityUpdate(array $data)
     {
         date_default_timezone_set('Asia/Jakarta');
         $db = new ActivityModel;
         $db->insert([
-            'author' => $data['data']['author'],
-            'table' => 'menu',
-            'description' => 'mengupdate menu ' . $data['data']['menu'],
+            'author' => session()->get('user_id'),
+            'table' => 'setting',
+            'description' => 'mengupdate setting ',
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }

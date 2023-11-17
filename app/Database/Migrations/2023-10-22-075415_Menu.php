@@ -31,16 +31,16 @@ class Menu extends Migration
                 'type'       => 'INT',
                 'constraint' => '5',
             ],
-            'category' => [
-                'type'       => 'INT',
-                'constraint' => '5',
-            ],
             'price' => [
                 'type'       => 'INT',
                 'constraint' => '100',
             ],
             'description' => [
                 'type' => 'TEXT',
+            ],
+            'slide' => [
+                'type'       => 'SMALLINT',
+                'constraint' => '1',
             ],
         ]);
         $this->forge->addKey('id', true);

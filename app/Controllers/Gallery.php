@@ -19,8 +19,8 @@ class Gallery extends BaseController
         $data = [
             'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at', 'DESC')->findAll(5),
             'active' => [
-                'page'=>'form',
-                'current'=>'gallery',
+                'page' => 'form',
+                'current' => 'Gallery',
             ],
             'datas' => $res,
         ];
@@ -42,7 +42,7 @@ class Gallery extends BaseController
         ];
         $res = $this->db->save($data);
         if (!$res) {
-            return \redirect()->back()->withInput()->with('errors',$this->db->errors());
+            return \redirect()->back()->withInput()->with('errors', $this->db->errors());
         }
         $photo->move(ROOTPATH . 'public/assets/uploads/galleries', $name);
         return \redirect()->to(\base_url('dashboard/galleries'));
@@ -50,7 +50,7 @@ class Gallery extends BaseController
     public function update()
     {
         helper('form', 'session');
-        $gallery=$this->db->find($this->request->getPost('id'));
+        $gallery = $this->db->find($this->request->getPost('id'));
         $photo = $this->request->getFile('image');
         $name = $gallery['image'];
 
@@ -69,7 +69,7 @@ class Gallery extends BaseController
         ];
         $res = $this->db->save($data);
         if (!$res) {
-            return \redirect()->back()->withInput()->with('errors',$this->db->errors());
+            return \redirect()->back()->withInput()->with('errors', $this->db->errors());
         }
         return \redirect()->back();
     }

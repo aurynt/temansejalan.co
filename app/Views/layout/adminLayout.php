@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('assets/admin/'); ?>img/apple-icon.png">
   <link rel="icon" type="image/png" href="<?= base_url('assets/admin/'); ?>img/favicon.png">
-  <title>
-    Material Dashboard 2 by Creative Tim
+  <title class="text-capitalize">
+    <?= $active['current']; ?> &mdash; Temansejalan
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -34,11 +34,11 @@
     <div class="w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white <?= $active['current'] === 'dashboard' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard'); ?>">
+          <a class="nav-link text-white <?= $active['current'] === 'Dashboard' ? 'active bg-gradient-primary' : ''; ?> " href="<?= base_url('dashboard'); ?>">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text text-capitalize ms-1">dashboard</span>
           </a>
         </li>
         <details>
@@ -53,16 +53,16 @@
             </div>
           </summary>
           <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('dashboard/menus'); ?>">
-            <span class="nav-link-text ms-1 ps-4">Menus</span>
-          </a>
+            <a class="nav-link text-white" href="<?= base_url('dashboard/menus'); ?>">
+              <span class="nav-link-text ms-1 ps-4">Menus</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="<?= base_url('dashboard/galleries'); ?>">
               <span class="nav-link-text ms-1 ps-4">Galleries</span>
             </a>
           </li>
-          <?php if(session()->get('email')==='Kantin.temansejalan@gmail.com'): ?>
+          <?php if (session()->get('email') === 'Kantin.temansejalan@gmail.com') : ?>
             <li class="nav-item">
               <a class="nav-link text-white" href="<?= base_url('dashboard/users'); ?>">
                 <span class="nav-link-text ms-1 ps-4">Users</span>
@@ -82,9 +82,9 @@
             </div>
           </summary>
           <li class="nav-item">
-          <a class="nav-link text-white" href="<?= base_url('dashboard/menu'); ?>">
-            <span class="nav-link-text ms-1 ps-4">Menu</span>
-          </a>
+            <a class="nav-link text-white" href="<?= base_url('dashboard/menu'); ?>">
+              <span class="nav-link-text ms-1 ps-4">Menu</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="<?= base_url('dashboard/gallery'); ?>">
@@ -103,7 +103,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
-        <?php if(session()->get('email')==='Kantin.temansejalan@gmail.com'): ?>
+        <?php if (session()->get('email') === 'Kantin.temansejalan@gmail.com') : ?>
           <li class="nav-item">
             <a class="nav-link text-white " href="<?= base_url('auth/sign-up'); ?>">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -130,11 +130,11 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <form action="<?= base_url('menu/search'); ?>" method="get">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input value="<?= old('q'); ?>" type="text" name="q" class="form-control">
-            </div>
-          </form>
+              <div class="input-group input-group-outline">
+                <label class="form-label">Type here...</label>
+                <input value="<?= old('q'); ?>" type="text" name="q" class="form-control">
+              </div>
+            </form>
           </div>
           <ul class="navbar-nav justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -157,7 +157,7 @@
                 <i class="fa fa-bell cursor-pointer"></i>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <?php if($activities==null): ?>
+                <?php if ($activities == null) : ?>
                   <li>
                     <a class="dropdown-item border-radius-md" href="<?= base_url('dashboard/activities'); ?>">
                       <div class="d-flex py-1">
@@ -174,8 +174,8 @@
                       </div>
                     </a>
                   </li>
-                <?php endif;?>
-                <?php foreach($activities as $activity):?>  
+                <?php endif; ?>
+                <?php foreach ($activities as $activity) : ?>
                   <li class="mb-2">
                     <a class="dropdown-item border-radius-md" href="<?= base_url('dashboard/activities'); ?>">
                       <div class="d-flex py-1">
@@ -186,7 +186,7 @@
                         </div>
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold"><?= $activity['email']; ?></span> <?= $activity['description']; ?>
+                            <span class="font-weight-bold"><?= $activity['email']; ?></span> <?= $activity['description']; ?>
                           </h6>
                           <p class="text-xs text-secondary mb-0">
                             <i class="fa fa-clock me-1"></i>
@@ -196,8 +196,8 @@
                       </div>
                     </a>
                   </li>
-                  <?php endforeach; ?>
-                </ul>
+                <?php endforeach; ?>
+              </ul>
             </li>
           </ul>
         </div>
@@ -215,7 +215,7 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="" class="font-weight-bold" target="_blank">Auryncode</a>
+                <a href="https://auryncode.vercel.app/" class="font-weight-bold" target="_blank">Auryncode</a>
                 for a better web.
               </div>
             </div>
@@ -248,8 +248,11 @@
           borderRadius: 4,
           borderSkipped: false,
           backgroundColor: "rgba(255, 255, 255, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
-          maxBarThickness: 6
+          maxBarThickness: 6,
+          data: <?php
+                $data = [100, 20, 30, 300, 76];
+                echo '[' . implode(', ', $data) . '],';
+                ?>
         }, ],
       },
       options: {

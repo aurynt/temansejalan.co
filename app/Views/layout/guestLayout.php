@@ -73,7 +73,7 @@
 					<div class="col-md-12 text-center">
 						<div class="display-t js-fullheight">
 							<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-								<h1>The Best Coffee <em>&amp;</em> Restaurant <em>in</em> Karanganyar</h1>
+								<h1 class="title-layout">#NEXTLEVELKANTIN</h1>
 							</div>
 						</div>
 					</div>
@@ -101,7 +101,6 @@
 				</div>
 			</div>
 		</div>
-
 		<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
 			<div class="container">
 				<div class="row row-pb-md">
@@ -122,9 +121,9 @@
 					<div class="col-md-6 col-md-push-1 fh5co-widget">
 						<h4>Contact Information</h4>
 						<ul class="fh5co-footer-links">
-							<li>Manggeh, Tegalgede, Kec. Karanganyar <br> Kabupaten Karanganyar, Jawa Tengah 57714</li>
-							<li><a target="_blank" href="https://wa.me/085725082864">+62 857-2508-2864</a></li>
-							<li><a href="mailto:Kantin.temansejalan@gmail.com">Kantin.temansejalan@gmail.com</a></li>
+							<li>Jl.Citarum, Manggeh, Tegalgede, Kec. Karanganyar <br> Kabupaten Karanganyar, Jawa Tengah 57714</li>
+							<li><a target="_blank" href="https://wa.me/<?= $setting['whatsapp']; ?>?text=hallo ka barra.. saya mau nanya nanya boleh ngga nih"><?= $setting['whatsapp']; ?></a></li>
+							<li><a href="mailto:<?= $setting['email']; ?>"><?= $setting['email']; ?></a></li>
 						</ul>
 					</div>
 
@@ -134,14 +133,12 @@
 					<div class="col-md-12 text-center">
 						<p>
 							<small class="block">&copy; 2023 Temansecalan.co. All Rights Reserved.</small>
-							<small class="block">Designed by <a href="" target="_blank">Auryncode</a></small>
+							<small class="block">Designed by <a href="https://auryncode.vercel.app/" target="_blank">Auryncode</a></small>
 						</p>
 						<p>
 						<ul class="fh5co-social-icons">
-							<li><a target="_blank" href="https://instagram.com/temansejalan.co?igshid=cHR4cTFoeThkbmJl"><i class="icon-instagram"></i></a></li>
-							<li><a href="#"><i class="icon-facebook2"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-							<li><a href="<?= base_url(); ?>"><i class="icon-dribbble2"></i></a></li>
+							<li><a target="_blank" href="https://instagram.com/<?= $setting['instagram']; ?>"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://facebook.com/<?= $setting['facebook']; ?>"><i class="icon-facebook2"></i></a></li>
 						</ul>
 						</p>
 					</div>

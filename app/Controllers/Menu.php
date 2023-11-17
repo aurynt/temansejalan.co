@@ -23,7 +23,7 @@ class Menu extends BaseController
             'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at', 'DESC')->findAll(5),
             'active' => [
                 'page' => 'form',
-                'current' => 'menu'
+                'current' => 'Menu'
             ],
             'datas' => $res,
         ];
@@ -36,19 +36,28 @@ class Menu extends BaseController
         $photo = $this->request->getFile('photo');
         $name = date('YmdHis') . '.' . $photo->getExtension();
         $slug = strtolower(trim(preg_replace("/[^A-Za-z0-9-]+/", '-', $this->request->getVar('name'))));
+
+        $rule = [
+            'menu' => 'min_length[3]|required|is_unique[menu]',
+            'price' => 'required',
+            'description' => 'required_with[slide]',
+            'photo' => 'required|', //ext_in[photo,jpeg,png,jpg]|uploaded[photo]',
+        ];
+
         $data = [
             'menu' => $this->request->getVar('name'),
             'price' => $this->request->getVar('price'),
             'description' => $this->request->getVar('description'),
             'photo' => $name,
             'slug' => $slug,
+            'slide' => $this->request->getVar('slide'),
             'author' => session()->get('user_id'),
         ];
-        $res = $this->db->save($data);
-        if (!$res) {
-            return \redirect()->back()->withInput()->with('errors', $this->db->errors());
+        if (!$this->validateData($data, $rule)) {
+            return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
+        $this->db->save($data);
         return \redirect()->to(base_url('dashboard/menus'));
     }
     public function update()
@@ -58,12 +67,14 @@ class Menu extends BaseController
         $photo = $this->request->getFile('photo');
         $name = $menu['photo'];
 
-        if (!$photo->hasMoved() && $photo->isValid()) {
-            $name = date('YmdHis') . '.' . $photo->getExtension();
-            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
-        }
-
         $slug = strtolower(trim(preg_replace("/[^A-Za-z0-9-]+/", '-', $this->request->getVar('name'))));
+        $rule = [
+            'menu' => 'min_length[3]|required',
+            'price' => 'required',
+            'description' => 'required_with[slide]',
+            'photo' => 'required|', //ext_in[photo,jpeg,png,jpg]|uploaded[photo]',
+        ];
+
         $data = [
             'id' => $this->request->getVar('id'),
             'menu' => $this->request->getVar('name'),
@@ -71,12 +82,20 @@ class Menu extends BaseController
             'description' => $this->request->getVar('description'),
             'photo' => $name,
             'slug' => $slug,
+            'slide' => $this->request->getVar('slide'),
             'author' => session()->get('user_id'),
         ];
-        $res = $this->db->save($data);
-        if (!$res) {
-            return \redirect()->back()->withInput()->with('errors', $this->db->errors());
+
+        if (!$this->validateData($data, $rule)) {
+            return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
+
+        if (!$photo->hasMoved() && $photo->isValid()) {
+            $name = date('YmdHis') . '.' . $photo->getExtension();
+            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
+        }
+
+        $this->db->save($data);
         return \redirect()->to(base_url('dashboard/menus'));
     }
     public function delete()

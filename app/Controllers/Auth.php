@@ -42,11 +42,11 @@ class Auth extends BaseController
             ];
             $res = $this->db->save($data);
             if (!$res) {
-                return redirect()->back()->withInput()->with('errors',$this->db->errors());
-            } 
-            return redirect()->back()->with('succes','succesfuly created account');
+                return redirect()->back()->withInput()->with('errors', $this->db->errors());
+            }
+            return redirect()->back()->with('succes', 'succesfuly created account');
         } else {
-            \session()->setFlashdata('message', 'Password do not match',2);
+            \session()->setFlashdata('message', 'Password do not match', 2);
             return redirect()->back()->withInput();
         }
     }
@@ -77,50 +77,54 @@ class Auth extends BaseController
     {
         helper('form');
         $email = $this->request->getVar('email');
-        $res = $this->db->where('email',$email)->delete();
-        return \redirect()->to('dashboard/users')->with('succes','succesfuly deleted user');
+        $res = $this->db->where('email', $email)->delete();
+        return \redirect()->to('dashboard/users')->with('succes', 'succesfuly deleted user');
     }
 
-    public function forgotPassword(){
+    public function forgotPassword()
+    {
         $data = [
             'title' => 'forgot password'
         ];
-        return \view('auth/forget-password',$data);
+        return \view('auth/forget-password', $data);
     }
-    public function reset(){
-        $email=session()->get('emailResetPassword');
-        $password=password_hash($this->request->getPost('password'),PASSWORD_BCRYPT);
+    public function reset()
+    {
+        $email = session()->get('emailResetPassword');
+        $password = $this->request->getVar('password');
 
-        if(!password_verify($this->request->getPost('confirmPassword'),$password)){
-            return \redirect()->back()->with('message','Password do not match');
+        if ($this->request->getVar('confirmPassword') !== $password) {
+            return \redirect()->back()->with('message', 'Password do not match');
         }
-        $res=$this->db->where('email',$email)->set(['password'=>$password])->update();
+        $res = $this->db->where('email', $email)->set(['password' => $password])->update();
         return \redirect()->to('auth/sign-in');
     }
-    public function resetPassword(){
-        $email=session()->get('emailResetPassword');
-        $verify=session()->get('token')===$this->request->getGet('token');;
-        if(!$verify){
-            return redirect()->back()->with('message','Wrong token');
+    public function resetPassword()
+    {
+        $email = session()->get('emailResetPassword');
+        $verify = session()->get('token') === $this->request->getGet('token');;
+        if (!$verify) {
+            return redirect()->back()->with('message', 'Wrong token');
         }
 
         $data = [
             'title' => 'reset password'
         ];
-        return view('auth/reset-password',$data);
+        return view('auth/reset-password', $data);
     }
-    public function resetLink(){
-        $emailTo=$this->request->getPost('email');
+    public function resetLink()
+    {
+        $emailTo = $this->request->getPost('email');
 
-        \session()->set('emailResetPassword',$emailTo);
-        
-        $res=$this->db->where('email',$emailTo)->first();
-        
-        if($res==null){
-            return \redirect()->back()->with('message','Email not found');
+        \session()->set('emailResetPassword', $emailTo);
+
+        $res = $this->db->where('email', $emailTo)->first();
+
+        if ($res == null) {
+            return \redirect()->back()->with('message', 'Email not found');
         }
-        $token=bin2hex(random_bytes(16));
-        \session()->set('token',$token);
+        $token = bin2hex(random_bytes(16));
+        \session()->set('token', $token);
 
         $subject = 'Reset Password';
         $message = 'Klik tautan berikut untuk mereset password: ' . base_url('auth/reset-password?token=' . $token);
@@ -128,10 +132,10 @@ class Auth extends BaseController
         $email->setTo($emailTo);
         $email->setSubject($subject);
         $email->setMessage($message);
-        $res=$email->send();
-        if(!$res){
-            return \redirect()->back()->with('message','Email gagal dikirim');
+        $res = $email->send();
+        if (!$res) {
+            return \redirect()->back()->with('message', 'Email gagal dikirim');
         }
-        return \redirect()->back()->with('succes','Email sudah dikirim');
+        return \redirect()->back()->with('succes', 'Email sudah dikirim');
     }
 }

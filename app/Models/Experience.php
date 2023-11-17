@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class GalleryModel extends Model
+class Experience extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'gallery';
+    protected $table            = 'experience';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['image', 'author', 'information', 'title', 'event'];
+    protected $allowedFields    = ['title', 'description'];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,11 +23,7 @@ class GalleryModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules = [
-        'image' => 'required|', //ext_in[image,jpeg,png,jpg]|is_image[image]|mime_in[image,image/png,image/jpeg,image/jpg]',
-        'information' => 'required_with[event]',
-        'title' => 'required_with[event]',
-    ];
+    protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -37,7 +33,7 @@ class GalleryModel extends Model
     protected $beforeInsert   = [];
     protected $afterInsert    = ['addToActivityInsert'];
     protected $beforeUpdate   = [];
-    protected $afterUpdate    = ['addToActivityUpdate'];
+    protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
@@ -48,31 +44,21 @@ class GalleryModel extends Model
         date_default_timezone_set('Asia/Jakarta');
         $db = new ActivityModel;
         $db->insert([
-            'author' => $data['data']['author'],
-            'table' => 'gallery',
-            'description' => 'menambahkan gallery',
+            'author' => session()->get('user_id'),
+            'table' => 'experience',
+            'description' => 'menambahkan experience ' . $data['data']['title'],
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }
     protected function addToActivityDelete(array $data)
     {
         date_default_timezone_set('Asia/Jakarta');
+        var_dump($data);
         $db = new ActivityModel;
         $db->insert([
             'author' => \session()->get('user_id'),
-            'table' => 'gallery',
-            'description' => 'menghapus gallery',
-            'created_at' => \date('Y-m-d H:i:s')
-        ]);
-    }
-    protected function addToActivityUpdate(array $data)
-    {
-        date_default_timezone_set('Asia/Jakarta');
-        $db = new ActivityModel;
-        $db->insert([
-            'author' => $data['data']['author'],
-            'table' => 'gallery',
-            'description' => 'mengupdate gallery',
+            'table' => 'experience',
+            'description' => 'menghapus experience',
             'created_at' => \date('Y-m-d H:i:s')
         ]);
     }

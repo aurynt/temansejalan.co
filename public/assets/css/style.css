@@ -5,6 +5,20 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'coolvetica';
+  src: url("../fonts/coolvetica/coolvetica condensed rg.otf");
+  src: url("../fonts/coolvetica/coolvetica condensed rg.otf") format("embedded-opentype"), url("../fonts/coolvetica/coolvetica condensed rg.otf") format("truetype"), url("../fonts/coolvetica/coolvetica condensed rg.otf") format("woff"), url("../fonts/coolvetica/coolvetica condensed rg.otf") format("svg");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'coolvetica-bold';
+  src: url("../fonts/coolvetica/coolvetica rg.otf");
+  src: url("../fonts/coolvetica/coolvetica rg.otf") format("embedded-opentype"), url("../fonts/coolvetica/coolvetica rg.otf") format("truetype"), url("../fonts/coolvetica/coolvetica rg.otf") format("woff"), url("../fonts/coolvetica/coolvetica rg.otf") format("svg");
+  font-weight: 100;
+  font-style: normal;
+}
 /* =======================================================
 *
 * 	Template Style 
@@ -23,7 +37,24 @@ body {
     background: #000 url(../images/broken_noise.png) repeat;
   }
 }
-
+.title-layout{
+  font-family: 'coolvetica-bold';
+  letter-spacing: 10px;
+}
+.img-figure{
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  position: relative;
+}
+.img-custom{
+  display: block;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 #page {
   position: relative;
   overflow-x: hidden;
@@ -70,8 +101,7 @@ p {
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 400;
+  font-family: "coolvetica";
   margin: 0 0 20px 0;
 }
 
@@ -127,7 +157,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   font-weight: 700;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "coolvetica", Georgia, serif;
   color: #fff !important;
 }
 .scrolled .fh5co-nav #fh5co-logo {
@@ -457,7 +487,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .section-heading h2 {
   font-style: 40px;
   color: #fff;
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica";
 }
 
 #fh5co-about .img-wrap img {
@@ -479,7 +509,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-featured-menu .fh5co-heading h2, #fh5co-gallery .fh5co-heading h2, #fh5co-reservation-form .fh5co-heading h2 {
   color: #fff;
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica";
 }
 #fh5co-featured-menu .fh5co-item-wrap, #fh5co-gallery .fh5co-item-wrap, #fh5co-reservation-form .fh5co-item-wrap {
   padding-left: 20px;
@@ -488,7 +518,6 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-featured-menu .fh5co-item, #fh5co-gallery .fh5co-item, #fh5co-reservation-form .fh5co-item {
   float: left;
   width: 100%;
-  backround: #fff;
 }
 #fh5co-featured-menu .fh5co-item.margin_top, #fh5co-gallery .fh5co-item.margin_top, #fh5co-reservation-form .fh5co-item.margin_top {
   margin-top: 150px;
@@ -557,7 +586,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-featured-testimony .fh5co-heading h2 {
   color: #fff;
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica", cursive;
 }
 #fh5co-featured-testimony .img-to-responsive img {
   margin-bottom: 20px;
@@ -601,7 +630,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #fh5co-slider .fh5co-heading h2 {
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica", cursive;
   color: #fff;
 }
 
@@ -780,7 +809,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 0;
 }
 #fh5co-started .fh5co-heading h2 {
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica", cursive;
   color: #fff;
   margin-bottom: 20px !important;
 }
@@ -1034,7 +1063,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 #fh5co-blog .fh5co-heading h2, #fh5co-contact .fh5co-heading h2 {
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica", cursive;
   color: #fff;
 }
 
@@ -1731,7 +1760,7 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 54px;
   font-size: 20px;
   font-weight: 300;
-  font-family: "Satisfy", cursive;
+  font-family: "coolvetica", cursive;
   color: #fff;
 }
 .form-control:active, .form-control:focus {

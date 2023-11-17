@@ -1,6 +1,6 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
-<?php $errors=session()->get('errors'); ?>
+<?php $errors = session()->get('errors'); ?>
 <div class="row">
   <div class="col-12">
     <div class="card my-4">
@@ -11,26 +11,41 @@
       </div>
       <div class="card-body px-4 pb-2">
         <form enctype="multipart/form-data" class="p-2 was-validated" action="<?= base_url('menu/add'); ?>" method="post">
-          <?= csrf_field(); ?> 
-        <div class="form-group mb-3">
+          <?= csrf_field(); ?>
+          <div class="form-group mb-3">
             <label for="exampleInputEmail1">Menu</label>
             <input value="<?= old('name'); ?>" name="name" type="text" class="form-control border border-primary px-4 p-2">
-            <small class="form-text text-danger"><?= $errors['menu']??''; ?></small>
+            <small class="form-text text-danger"><?= $errors['menu'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">
             <label for="exampleInputEmail1">Harga</label>
-            <input  value="<?= old('price'); ?>" name="price" type="text" class="form-control border border-primary px-4 p-2">
-            <small class="form-text text-danger"><?= $errors['price']??''; ?></small>
+            <input value="<?= old('price'); ?>" name="price" type="text" class="form-control border border-primary px-4 p-2">
+            <small class="form-text text-danger"><?= $errors['price'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">
             <label for="exampleInputEmail1">Deskripsi</label>
             <textarea class="form-control border border-primary px-4 p-2" name="description" rows="5"><?= old('description'); ?></textarea>
-            <small class="form-text text-danger"><?= $errors['description']??''; ?></small>
+            <small class="form-text text-danger"><?= $errors['description'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">
             <label for="exampleInputEmail1">Foto</label>
             <input value="<?= old('photo'); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
-            <small class="form-text text-danger"><?= $errors['photo']??''; ?></small>
+            <small class="form-text text-danger"><?= $errors['photo'] ?? ''; ?></small>
+          </div>
+          <div class="form-group mb-3">
+            <label for="exampleInputEmail1">Tampilkan sebagai slideshow</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slide" id="exampleRadios1" value="1">
+              <label class="form-check-label" for="exampleRadios1">
+                Ya
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="slide" id="exampleRadios2" value="0" checked>
+              <label class="form-check-label" for="exampleRadios2">
+                Tidak
+              </label>
+            </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
