@@ -38,8 +38,9 @@ body {
   }
 }
 .title-layout{
-  font-family: 'coolvetica-bold';
-  letter-spacing: 10px;
+  font-family: 'coolvetica';
+  letter-spacing: 5px;
+  font-size: 100px;
 }
 .img-figure{
   width: 100%;
@@ -97,6 +98,7 @@ a:hover, a:active, a:focus {
 p {
   margin-bottom: 30px;
   font-style: 18px;
+  font-family: 'calibri-light-regular',sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, figure {
@@ -157,7 +159,8 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   font-weight: 700;
-  font-family: "coolvetica", Georgia, serif;
+  letter-spacing: 3px;
+  font-family: "coolvetica-bold", Georgia, serif;
   color: #fff !important;
 }
 .scrolled .fh5co-nav #fh5co-logo {
@@ -363,8 +366,8 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-header .display-tc h1,
 .fh5co-cover .display-tc h1 {
   margin-bottom: 0px;
-  font-size: 74px;
-  font-size: 80px;
+  font-size: 84px;
+  font-size: 90px;
   font-weight: 700;
 }
 @media screen and (max-width: 768px) {
@@ -489,6 +492,9 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
   font-family: "coolvetica";
 }
+.section-heading p {
+  font-family: "calibri-light-regular",sans-serif;
+}
 
 #fh5co-about .img-wrap img {
   margin-bottom: 30px;
@@ -609,9 +615,9 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-featured-testimony blockquote p {
   font-size: 40px;
   line-height: 50px;
-  font-style: italic;
   font-weight: 300;
   color: #fff;
+  font-family: 'calibri-light-regular',sans-serif;
 }
 @media screen and (max-width: 992px) {
   #fh5co-featured-testimony blockquote p {

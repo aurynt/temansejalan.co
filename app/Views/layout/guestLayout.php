@@ -50,7 +50,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 text-center logo-wrap">
-						<div id="fh5co-logo"><a href="index.html">Temansejalan<span>.</span>co</a></div>
+						<div id="fh5co-logo"><a href="index.html">TemanSejalan<span>.</span>co</a></div>
 					</div>
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
@@ -105,7 +105,7 @@
 			<div class="container">
 				<div class="row row-pb-md">
 					<div class="col-md-4 fh5co-widget">
-						<h4>Temansejalan.co</h4>
+						<h4>TemanSejalan.co</h4>
 						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
 					</div>
 					<div class="col-md-2 col-md-push-1 fh5co-widget">

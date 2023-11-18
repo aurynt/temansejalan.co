@@ -8,9 +8,8 @@
 			</div>
 			<div class="col-md-5 col-md-push-1 animate-box">
 				<div class="section-heading">
-					<h2>Kantin Temansejalan</h2>
+					<h2>Kantin TemanSejalan</h2>
 					<p><?= $setting['description']; ?></p>
-					<p><a href="#" class="btn btn-primary btn-outline">Our History</a></p>
 				</div>
 			</div>
 		</div>
