@@ -29,7 +29,7 @@
           </div>
           <div class="form-group mb-3">
             <label for="exampleInputEmail1">Foto</label>
-            <input value="<?= old('photo'); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
+            <input accept="image/*" value="<?= old('photo'); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
             <small class="form-text text-danger"><?= $errors['photo'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">

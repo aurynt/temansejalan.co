@@ -27,73 +27,36 @@
 							<h3>Our Experience</h3>
 						</div>
 					</li>
-					<li class="animate-box timeline-unverted">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Acara Karanganyar Fun Brewing #1</h3>
+					<?php $no = 0;
+					foreach ($experiences as $exp) : ?>
+						<?php if ($no % 2 == 0) : ?>
+							<li class="animate-box timeline-unverted">
+								<div class="timeline-badge"><i class="icon-genius"></i></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h3 class="timeline-title"><?= $exp['title']; ?></h3>
 
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</li>
-					<li class="timeline-inverted animate-box">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Kopdar Modern Vespa Solo</h3>
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							</div>
-						</div>
-					</li>
-					<li class="animate-box timeline-unverted">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Kopdar Motor Custom Solo Raya</h3>
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</li>
-					<li class="timeline-inverted animate-box">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Event tahunan kantin</h3>
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							</div>
-						</div>
-					</li>
-					<li class="animate-box timeline-unverted">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Event buka bersama dengan Komunitas Motor Karanganyar</h3>
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</li>
-					<li class="timeline-inverted animate-box">
-						<div class="timeline-badge"><i class="icon-genius"></i></div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h3 class="timeline-title">Liputan acara dari TVRI</h3>
-							</div>
-							<div class="timeline-body">
-								<p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-							</div>
-						</div>
-					</li>
+									</div>
+									<div class="timeline-body">
+										<p><?= $exp['description']; ?></p>
+									</div>
+								</div>
+							</li>
+						<?php else : ?>
+							<li class="timeline-inverted animate-box">
+								<div class="timeline-badge"><i class="icon-genius"></i></div>
+								<div class="timeline-panel">
+									<div class="timeline-heading">
+										<h3 class="timeline-title"><?= $exp['title']; ?></h3>
+									</div>
+									<div class="timeline-body">
+										<p><?= $exp['description']; ?></p>
+									</div>
+								</div>
+							</li>
+						<?php endif ?>
+					<?php $no++;
+					endforeach; ?>
 				</ul>
 			</div>
 		</div>

@@ -33,7 +33,6 @@ class Auth extends BaseController
     }
     public function create()
     {
-        helper(['form']);
         if ($this->request->getVar('confirmPassword') === $this->request->getVar('password')) {
             $data = [
                 'name'     => $this->request->getVar('name'),
@@ -45,6 +44,59 @@ class Auth extends BaseController
                 return redirect()->back()->withInput()->with('errors', $this->db->errors());
             }
             return redirect()->back()->with('succes', 'succesfuly created account');
+        } else {
+            \session()->setFlashdata('message', 'Password do not match', 2);
+            return redirect()->back()->withInput();
+        }
+    }
+    public function updatePassword()
+    {
+        $user = $this->db->find($this->request->getVar('id'));
+        $rule = [
+            'password' => 'required',
+        ];
+        if (password_verify($this->request->getVar('password'), $user['password'])) {
+            if ($this->request->getPost('newPassword') !== $this->request->getPost('newPassword')) {
+                \session()->setFlashdata('message', 'Password do not match');
+                return redirect()->back()->withInput();
+            }
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'password' => $this->request->getVar('newPassword'),
+            ];
+            if (!$this->validateData($data, $rule)) {
+                return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+            $this->db->save($data);
+            return redirect()->back()->with('succes', 'succesfuly updated account');
+        } else {
+            \session()->setFlashdata('message', 'Password do not match');
+            return redirect()->back()->withInput();
+        }
+    }
+    public function update()
+    {
+        $user = $this->db->find($this->request->getVar('id'));
+        $rule = [
+            'name' => 'min_length[3]|required|',
+            'email' => 'required|valid_email',
+            'password' => 'required',
+        ];
+        if (password_verify($this->request->getVar('password'), $user['password'])) {
+            $data = [
+                'id' => $this->request->getVar('id'),
+                'name'     => $this->request->getVar('name'),
+                'email'    => $this->request->getVar('email'),
+                'password' => $user['password']
+            ];
+            if (!$this->validateData($data, $rule)) {
+                return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+            $this->db->save($data);
+            $session = \Config\Services::session();
+            $session->set('email', $data['email']);
+            $session->set('name', $data['name']);
+            return redirect()->back()->with('succes', 'succesfuly updated account');
         } else {
             \session()->setFlashdata('message', 'Password do not match', 2);
             return redirect()->back()->withInput();

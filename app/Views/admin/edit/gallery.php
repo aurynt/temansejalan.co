@@ -28,7 +28,7 @@
             <div class="card mb-3" style="width:153px;height: 102px;">
               <img style="width:153px;height: 102px;" src="<?= base_url('assets/') . 'uploads/galleries/' . $datas['image']; ?>" class="rounded" alt="gallery image">
             </div>
-            <input value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
+            <input accept="image/*" value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
             <small id="emailHelp" class="form-text text-danger"><?= $errors['image'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">

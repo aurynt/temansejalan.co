@@ -25,6 +25,7 @@ class Setting extends BaseController
         ];
 
         $data = [
+            'id' => '1',
             'description' => $this->request->getPost('description'),
             'instagram' => $this->request->getPost('instagram') ?? '',
             'facebook' => $this->request->getPost('facebook') ?? '',

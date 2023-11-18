@@ -28,7 +28,7 @@ class Root implements FilterInterface
     {
         $session = Services::session();
 
-        if ($session->get('email')!=='Kantin.temansejalan@gmail.com') {
+        if ($session->get('user_id') !== '1') {
             // User is not logged in, redirect to the login page
             return redirect()->back();
         }

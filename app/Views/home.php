@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
-				<img src="<?= base_url('assets/images/hero_1.jpeg'); ?>" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
+				<img src="<?= $setting['image'] !== '' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
 			</div>
 			<div class="col-md-5 col-md-push-1 animate-box">
 				<div class="section-heading">

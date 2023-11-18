@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1">Foto</label>
-                        <input value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
+                        <input accept="image/*" value="<?= old('image'); ?>" name="image" type="file" class="form-control px-4 p-2 border border-primary">
                         <small id="emailHelp" class="form-text text-danger"><?= $errors['image'] ?? ''; ?></small>
                     </div>
                     <div class="form-group mb-3">

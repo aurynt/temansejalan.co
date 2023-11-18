@@ -33,7 +33,7 @@
             <div class="card mb-3" style="width:153px;height: 102px;">
               <img style="width:153px;height: 102px;" src="<?= base_url('assets/') . 'uploads/menus/' . $datas['photo']; ?>" class="rounded" alt="<?= $datas['menu']; ?>">
             </div>
-            <input value="<?= old('photo', $datas['photo']); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
+            <input accept="image/*" value="<?= old('photo', $datas['photo']); ?>" name="photo" type="file" class="form-control border border-primary px-4 p-2">
             <small class="form-text text-danger"><?= $errors['photo'] ?? ''; ?></small>
           </div>
           <div class="form-group mb-3">

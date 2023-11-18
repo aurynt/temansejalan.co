@@ -52,19 +52,19 @@
               </a>
             </div>
           </summary>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('dashboard/menus'); ?>">
+          <li class="nav-item ">
+            <a class="nav-link <?= $active['current'] === 'Menu' ? 'text-primary' : ''; ?>" href="<?= base_url('dashboard/menus'); ?>">
               <span class="nav-link-text ms-1 ps-4">Menus</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('dashboard/galleries'); ?>">
+            <a class="nav-link <?= $active['current'] === 'Gallery' ? 'text-primary' : ''; ?>" href="<?= base_url('dashboard/galleries'); ?>">
               <span class="nav-link-text ms-1 ps-4">Galleries</span>
             </a>
           </li>
-          <?php if (session()->get('email') === 'Kantin.temansejalan@gmail.com') : ?>
+          <?php if (session()->get('user_id') === '1') : ?>
             <li class="nav-item">
-              <a class="nav-link text-white" href="<?= base_url('dashboard/users'); ?>">
+              <a class="nav-link <?= $active['current'] === 'User' ? 'text-primary' : ''; ?>" href="<?= base_url('dashboard/users'); ?>">
                 <span class="nav-link-text ms-1 ps-4">Users</span>
               </a>
             </li>
@@ -82,12 +82,12 @@
             </div>
           </summary>
           <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('dashboard/menu'); ?>">
+            <a class="nav-link <?= $active['current'] === 'Menu' ? 'text-primary' : ''; ?>" href="<?= base_url('dashboard/menu'); ?>">
               <span class="nav-link-text ms-1 ps-4">Menu</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="<?= base_url('dashboard/gallery'); ?>">
+            <a class="nav-link <?= $active['current'] === 'Gallery' ? 'text-primary' : ''; ?>" href="<?= base_url('dashboard/gallery'); ?>">
               <span class="nav-link-text ms-1 ps-4">Gallery</span>
             </a>
           </li>
@@ -103,7 +103,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
-        <?php if (session()->get('email') === 'Kantin.temansejalan@gmail.com') : ?>
+        <?php if (session()->get('user_id') === '1') : ?>
           <li class="nav-item">
             <a class="nav-link text-white " href="<?= base_url('auth/sign-up'); ?>">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

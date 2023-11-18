@@ -30,7 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 //admin
-$routes->group('',['filter'=>'authcheck'],function($routes) {
+$routes->group('', ['filter' => 'authcheck'], function ($routes) {
     $routes->get('/dashboard', 'Dashboard::index');
     $routes->get('/dashboard/menus', 'Dashboard::listMenu');
     $routes->get('/dashboard/activities', 'Dashboard::activity');
@@ -46,8 +46,8 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->post('/menu/update', 'Menu::update');
     $routes->post('/menu/delete', 'Menu::delete');
     //user
-    $routes->post('/user/delete', 'Auth::delete',['filter'=>'rootcheck']);
-    $routes->get('/dashboard/users', 'Dashboard::listUser',['filter'=>'rootcheck']);
+    $routes->post('/user/delete', 'Auth::delete', ['filter' => 'rootcheck']);
+    $routes->get('/dashboard/users', 'Dashboard::listUser', ['filter' => 'rootcheck']);
     //gallery
     $routes->post('/gallery/add', 'Gallery::create');
     $routes->post('/gallery/update', 'Gallery::update');
@@ -56,10 +56,17 @@ $routes->group('',['filter'=>'authcheck'],function($routes) {
     $routes->get('/auth/sign-up', 'Auth::signup');
     $routes->get('/auth/sign-out', 'Auth::signout');
     $routes->post('/auth/create', 'Auth::create');
+    $routes->post('/auth/update', 'Auth::update');
+    $routes->post('/auth/change-password', 'Auth::updatePassword');
+    //setting
+    $routes->post('/setting/update', 'Setting::update');
+    //experience
+    $routes->post('/exp/add', 'Experience::create');
+    $routes->post('/exp/delete', 'Experience::delete');
 });
 
 //auth
-$routes->group('',['filter'=>'guestcheck'],function($routes) {
+$routes->group('', ['filter' => 'guestcheck'], function ($routes) {
     $routes->get('/auth/sign-in', 'Auth::signin');
     $routes->get('/auth/forgot-password', 'Auth::forgotPassword');
     $routes->get('/auth/reset-password', 'Auth::resetPassword');
@@ -71,9 +78,6 @@ $routes->group('',['filter'=>'guestcheck'],function($routes) {
     $routes->get('/menus', 'Home::menu');
     $routes->get('/gallery', 'Home::gallery');
     $routes->get('/about', 'Home::about');
-});
-$routes->group('',['filter'=>'guestcheck'],function($routes) {
-
 });
 
 /*

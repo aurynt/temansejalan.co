@@ -14,14 +14,18 @@ class Experience extends BaseController
     }
     public function create()
     {
+        $rule = [
+            'description' => 'required',
+            'title' => 'required',
+        ];
         $data = [
             'description' => $this->request->getPost('description'),
             'title' => $this->request->getPost('title'),
         ];
-        $res = $this->db->save($data);
-        if (!$res) {
-            return \redirect()->back()->withInput()->with('errors', $this->db->errors());
+        if (!$this->validateData($data, $rule)) {
+            return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
+        $this->db->save($data);
         return \redirect()->back()->with('message', 'Succes add experience');
     }
     public function delete()

@@ -132,10 +132,9 @@ class Dashboard extends BaseController
     {
         $data = [
             'setting' => $this->setting->find('1'),
-            'experiences' => $this->exp->paginate(5),
+            'experiences' => $this->exp->paginate(7),
             'pager' => $this->exp->pager,
             'activities' => $this->activity->join('user', 'user.id=activity.author')->orderBy('created_at', 'DESC')->findAll(5),
-            'events' => $this->gallery->where('event', '1')->orderBy('id', 'DESC')->findAll(4),
             'active' => [
                 'page' => 'profile',
                 'current' => 'Profile',

@@ -61,7 +61,7 @@
                   </div>
                 </div>
                 <div class="card-body px-4 pb-2">
-                  <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('menu/add'); ?>" method="post">
+                  <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('setting/update'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group mb-3">
                       <label for="exampleInputEmail1">Deskripsi</label>
@@ -88,7 +88,15 @@
                       <input value="<?= old('email', $setting['email']); ?>" name="email" type="email" class="form-control border border-primary px-4 p-2">
                       <small class="form-text text-danger"><?= $errors['email'] ?? ''; ?></small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-group mb-3">
+                      <label for="exampleInputEmail1">Image</label>
+                      <div class="card mb-3" style="width:153px;height: 102px;">
+                        <img style="width:153px;height: 102px;" src="<?= $setting['image'] !== '' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" class="rounded" alt="<?= $setting['image']; ?>">
+                      </div>
+                      <input accept="image/*" value="<?= old('image'); ?>" name="image" type="file" class="form-control border border-primary px-4 p-2">
+                      <small class="form-text text-danger"><?= $errors['image'] ?? ''; ?></small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
                   </form>
                 </div>
               </div>
@@ -103,8 +111,9 @@
                   </div>
                 </div>
                 <div class="card-body px-4 pb-2">
-                  <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('menu/add'); ?>" method="post">
+                  <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('auth/update'); ?>" method="post">
                     <?= csrf_field(); ?>
+                    <input type="hidden" name="id" value="<?= session()->user_id; ?>">
                     <div class="form-group mb-3">
                       <label for="exampleInputEmail1">Name</label>
                       <input value="<?= old('name', session()->name); ?>" name="name" type="text" class="form-control border border-primary px-4 p-2">
@@ -117,17 +126,48 @@
                     </div>
                     <div class="form-group mb-3">
                       <label for="exampleInputEmail1">Password</label>
-                      <input value="<?= old('password'); ?>" name="whatsapp" type="password" class="form-control border border-primary px-4 p-2">
+                      <input name="password" type="password" class="form-control border border-primary px-4 p-2">
                       <small class="form-text text-danger"><?= $errors['password'] ?? ''; ?></small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </form>
+                </div>
+              </div>
+              <div class="card mt-4">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Change Password</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body px-4 pb-2">
+                  <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('auth/change-password'); ?>" method="post">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="id" value="<?= session()->user_id; ?>">
+                    <div class="form-group mb-3">
+                      <label for="exampleInputEmail1">Password</label>
+                      <input name="password" type="password" class="form-control border border-primary px-4 p-2">
+                      <small class="form-text text-danger"><?= $errors['password'] ?? ''; ?></small>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="exampleInputEmail1">New Password</label>
+                      <input name="newPassword" type="password" class="form-control border border-primary px-4 p-2">
+                      <small class="form-text text-danger"><?= $errors['newPassword'] ?? ''; ?></small>
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="exampleInputEmail1">Confirm Password</label>
+                      <input name="confirmPassword" type="password" class="form-control border border-primary px-4 p-2">
+                      <small class="form-text text-danger"><?= $errors['confirmPassword'] ?? ''; ?></small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
                   </form>
                 </div>
               </div>
             </div>
             <div class="tab-pane fade show " id="pills-experience" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="row">
-                <div class="col-12 col-xl-6">
+                <div class="col-12 mb-6">
                   <div class="card">
                     <div class="card-header pb-0 p-3">
                       <div class="row">
@@ -137,7 +177,7 @@
                       </div>
                     </div>
                     <div class="card-body px-4 pb-2">
-                      <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('menu/add'); ?>" method="post">
+                      <form enctype="multipart/form-data" class=" was-validated" action="<?= base_url('exp/add'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <div class="form-group mb-3">
                           <label for="exampleInputEmail1">Title</label>
@@ -154,7 +194,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-xl-6">
+                <div class="col-12">
                   <div class="card">
                     <div class="card-header pb-0 p-3">
                       <div class="row">
@@ -163,7 +203,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="card-body px-0 pb-2">
+                    <div class="card-body px-0">
                       <div class="table-responsive p-0">
                         <table class="table align-items-center justify-content-center mb-0">
                           <thead>
@@ -185,7 +225,7 @@
                                   <p class="text-sm font-weight-bold mb-0"><?= $exp['description']; ?></p>
                                 </td>
                                 <td class="align-middle">
-                                  <button type="button" class="btn bg-gradient-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                  <button type="button" class="btn text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Delete
                                   </button>
                                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,10 +240,10 @@
                                         <div class="modal-body">
                                           <p class="font-weight-semibold">Serius mau delete experience</p>
                                         </div>
-                                        <div class="modal-footer">
-                                          <form action="<?= base_url('gallery/delete'); ?>" method="post">
+                                        <div class="modal-footer d-flex align-items-center">
+                                          <form action="<?= base_url('exp/delete'); ?>" method="post">
                                             <?= csrf_field(); ?>
-                                            <input name="id" type="hidden" value="<?= $datas['id']; ?>">
+                                            <input name="id" type="hidden" value="<?= $exp['id']; ?>">
                                             <button class="btn btn-danger" type="submit">Delete</button>
                                           </form>
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>

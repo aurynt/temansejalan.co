@@ -1,6 +1,7 @@
 <?php
 
 use CodeIgniter\Pager\PagerRenderer;
+
 $pager->setSurroundCount(2);
 ?>
 
@@ -10,7 +11,7 @@ $pager->setSurroundCount(2);
 			<li class="page-item font-weight-bold">
 				<a class="page-link" href="<?= $pager->getPrevious() ?>" aria-label="Next">
 					<span class="material-icons">
-					keyboard_arrow_right
+						keyboard_arrow_right
 					</span>
 					<span class="sr-only">Next</span>
 				</a>
@@ -18,7 +19,7 @@ $pager->setSurroundCount(2);
 		<?php endif ?>
 
 		<?php foreach ($pager->links() as $link) : ?>
-			<li class="page-item <?= $link['active'] ? 'active' : '' ?>" >
+			<li class="page-item <?= $link['active'] ? 'active' : '' ?>">
 				<a class="page-link" href="<?= $link['uri'] ?>">
 					<?= $link['title'] ?>
 				</a>
@@ -29,12 +30,12 @@ $pager->setSurroundCount(2);
 			<li class="page-item font-weight-bold">
 				<a class="page-link" href="<?= $pager->getNext() ?>" aria-label="Next">
 					<span class="material-icons">
-					keyboard_arrow_right
+						keyboard_arrow_right
 					</span>
 					<span class="sr-only">Next</span>
 				</a>
 			</li>
-			
+
 
 		<?php endif ?>
 	</ul>
