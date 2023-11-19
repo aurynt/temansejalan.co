@@ -1,8 +1,8 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
 <div class="row">
-    </div>
-    <div class="row">
+</div>
+<div class="row">
   <div class="col-12">
     <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -12,6 +12,16 @@
       </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
+          <?php if (session()->getFlashdata('message')) : ?>
+            <div id="alert" class="alert alert-danger text-white" role="alert">
+              <?= session()->getFlashdata('message'); ?>
+            </div>
+          <?php endif; ?>
+          <?php if (session()->getFlashdata('succes')) : ?>
+            <div id="alert" class="alert alert-success text-white" role="alert">
+              <?= session()->getFlashdata('succes'); ?>
+            </div>
+          <?php endif; ?>
           <table class="table align-items-center justify-content-center mb-0">
             <thead>
               <tr>
@@ -37,7 +47,7 @@
                     <p class="text-sm font-weight-bold mb-0"><?= $gallery['information']; ?></p>
                   </td>
                   <td>
-                    <p class="text-sm font-weight-bold mb-0 <?= $gallery['event']=='1'?'text-success':'text-danger'; ?>"><?= $gallery['event']=='1'?'yes':'no'; ?></p>
+                    <p class="text-sm font-weight-bold mb-0 <?= $gallery['event'] == '1' ? 'text-success' : 'text-danger'; ?>"><?= $gallery['event'] == '1' ? 'yes' : 'no'; ?></p>
                   </td>
                   <td class="align-middle">
                     <?= $gallery['name']; ?>
@@ -51,7 +61,7 @@
               <?php endforeach ?>
             </tbody>
           </table>
-          <?= $pager->links('default','pagination'); ?>
+          <?= $pager->links('default', 'pagination'); ?>
         </div>
       </div>
     </div>

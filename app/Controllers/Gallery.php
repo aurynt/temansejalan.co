@@ -45,19 +45,24 @@ class Gallery extends BaseController
             return \redirect()->back()->withInput()->with('errors', $this->db->errors());
         }
         $photo->move(ROOTPATH . 'public/assets/uploads/galleries', $name);
-        return \redirect()->to(\base_url('dashboard/galleries'));
+        return \redirect()->back()->with('succes', 'Succesfuly added gallery');
     }
     public function update()
     {
         helper('form', 'session');
         $gallery = $this->db->find($this->request->getPost('id'));
         $photo = $this->request->getFile('image');
-        $name = $gallery['image'];
+        $image = $gallery['image'];
 
+        $name = $image;
         if (!$photo->hasMoved() && $photo->isValid()) {
             $name = date('YmdHis') . '.' . $photo->getExtension();
-            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
+            $photo->move(ROOTPATH . 'public/assets/uploads/galleries', $name);
+            if ($photo->hasMoved() && file_exists(ROOTPATH . 'public/assets/uploads/galleries/' . $image)) {
+                unlink(ROOTPATH . 'public/assets/uploads/galleries/' . $image);
+            }
         }
+
 
         $data = [
             'id' => $this->request->getPost('id'),
@@ -71,7 +76,7 @@ class Gallery extends BaseController
         if (!$res) {
             return \redirect()->back()->withInput()->with('errors', $this->db->errors());
         }
-        return \redirect()->back();
+        return \redirect()->back()->with('succes', 'Succesfuly updated menu');
     }
 
     public function delete()
@@ -79,7 +84,7 @@ class Gallery extends BaseController
         helper('form');
         $id = $this->request->getPost('id');
         $res = $this->db->delete($id);
-        return \redirect()->to('dashboard/galleries');
+        return \redirect()->to('dashboard/galleries')->with('succes', 'Succesfuly deleted gallery');
     }
     public function all()
     {

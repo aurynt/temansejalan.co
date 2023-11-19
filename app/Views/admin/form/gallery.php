@@ -10,6 +10,16 @@
                 </div>
             </div>
             <div class="card-body px-4 pb-2">
+                <?php if (session()->getFlashdata('message')) : ?>
+                    <div id="alert" class="alert alert-danger text-white" role="alert">
+                        <?= session()->getFlashdata('message'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (session()->getFlashdata('succes')) : ?>
+                    <div id="alert" class="alert alert-success text-white" role="alert">
+                        <?= session()->getFlashdata('succes'); ?>
+                    </div>
+                <?php endif; ?>
                 <form enctype="multipart/form-data" class="p-2" action="<?= base_url('gallery/add'); ?>" method="post">
                     <?= csrf_field(); ?>
                     <div class="form-group mb-3">
@@ -30,13 +40,13 @@
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1">Tampilkan di event</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="event" id="exampleRadios1" value="1" <?= old('event') == '1' ? 'checked' : ''; ?>>
+                            <input class="form-check-input" type="radio" name="event" id="exampleRadios1" value="1">
                             <label class="form-check-label" for="exampleRadios1">
                                 Ya
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="event" id="exampleRadios2" value="0" <?= old('event') == '1' ? 'checked' : ''; ?>>
+                            <input class="form-check-input" type="radio" name="event" id="exampleRadios2" value="0" checked>
                             <label class="form-check-label" for="exampleRadios2">
                                 Tidak
                             </label>

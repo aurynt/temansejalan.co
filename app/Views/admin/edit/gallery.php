@@ -10,6 +10,16 @@
         </div>
       </div>
       <div class="card-body px-4 pb-2">
+        <?php if (session()->getFlashdata('message')) : ?>
+          <div id="alert" class="alert alert-danger text-white" role="alert">
+            <?= session()->getFlashdata('message'); ?>
+          </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('succes')) : ?>
+          <div id="alert" class="alert alert-success text-white" role="alert">
+            <?= session()->getFlashdata('succes'); ?>
+          </div>
+        <?php endif; ?>
         <form enctype="multipart/form-data" class="p-2" action="<?= base_url('gallery/update'); ?>" method="post">
           <?= csrf_field(); ?>
           <input name="id" type="hidden" value="<?= $datas['id']; ?>">

@@ -15,8 +15,18 @@ class Setting extends BaseController
     }
     public function update()
     {
+        $sett = $this->db->find('1');
         $photo = $this->request->getFile('image');
-        $name = date('YmdHis') . '.' . $photo->getExtension();
+        $image = $sett['image'];
+
+        $name = $image;
+        if (!$photo->hasMoved() && $photo->isValid()) {
+            $name = date('YmdHis') . '.' . $photo->getExtension();
+            $photo->move(ROOTPATH . 'public/assets/uploads/', $name);
+            if ($photo->hasMoved() && file_exists(ROOTPATH . 'public/assets/uploads/' . $image)) {
+                unlink(ROOTPATH . 'public/assets/uploads/' . $image);
+            }
+        }
         $rule = [
             'description' => 'required',
             'whatsapp' => 'required',

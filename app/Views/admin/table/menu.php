@@ -10,12 +10,23 @@
       </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
+          <?php if (session()->getFlashdata('message')) : ?>
+            <div id="alert" class="alert alert-danger text-white" role="alert">
+              <?= session()->getFlashdata('message'); ?>
+            </div>
+          <?php endif; ?>
+          <?php if (session()->getFlashdata('succes')) : ?>
+            <div id="alert" class="alert alert-success text-white" role="alert">
+              <?= session()->getFlashdata('succes'); ?>
+            </div>
+          <?php endif; ?>
           <table class="table align-items-center mb-0">
             <thead>
               <tr>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">price</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">slide</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
                 <th class="text-secondary opacity-7"></th>
               </tr>
@@ -39,6 +50,9 @@
                   <td class="align-middle text-center text-sm">
                     <span class="badge badge-sm bg-gradient-success">Rp.<?= $menu['price']; ?></span>
                   </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-sm font-weight-bold mb-0 <?= $menu['slide'] == 1 ? 'text-success' : 'text-danger'; ?>"><?= $menu['slide'] == 1 ? 'yes' : 'no'; ?></span>
+                  </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold"><?= $menu['name']; ?></span>
                   </td>
@@ -51,7 +65,7 @@
               <?php endforeach; ?>
             </tbody>
           </table>
-          <?= $pager->links('default','pagination'); ?>
+          <?= $pager->links('default', 'pagination'); ?>
         </div>
       </div>
     </div>

@@ -58,15 +58,23 @@ class Menu extends BaseController
         }
         $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
         $this->db->save($data);
-        return \redirect()->to(base_url('dashboard/menus'));
+        return \redirect()->back()->with('succes', 'Succesfuly added menu');
     }
     public function update()
     {
         helper('form', 'session');
         $menu = $this->db->find($this->request->getPost('id'));
         $photo = $this->request->getFile('photo');
-        $name = $menu['photo'];
+        $image = $menu['photo'];
 
+        $name = $image;
+        if (!$photo->hasMoved() && $photo->isValid()) {
+            $name = date('YmdHis') . '.' . $photo->getExtension();
+            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
+            if ($photo->hasMoved() && file_exists(ROOTPATH . 'public/assets/uploads/menus/' . $image)) {
+                unlink(ROOTPATH . 'public/assets/uploads/menus/' . $image);
+            }
+        }
         $slug = strtolower(trim(preg_replace("/[^A-Za-z0-9-]+/", '-', $this->request->getVar('name'))));
         $rule = [
             'menu' => 'min_length[3]|required',
@@ -90,19 +98,15 @@ class Menu extends BaseController
             return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        if (!$photo->hasMoved() && $photo->isValid()) {
-            $name = date('YmdHis') . '.' . $photo->getExtension();
-            $photo->move(ROOTPATH . 'public/assets/uploads/menus', $name);
-        }
 
         $this->db->save($data);
-        return \redirect()->to(base_url('dashboard/menus'));
+        return \redirect()->back()->with('succes', 'Succesfuly updated menu');
     }
     public function delete()
     {
         helper('form');
         $id = $this->request->getVar('id');
         $res = $this->db->delete($id);
-        return \redirect()->to('dashboard/menus');
+        return \redirect()->to('dashboard/menus')->with('succes', 'Succesfuly deleted menu');
     }
 }
