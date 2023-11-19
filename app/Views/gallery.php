@@ -7,7 +7,7 @@
 				<h2>Our Gallery</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
+						<p>Explore the visual feast in our gallery! Immerse yourself in the vibrant colors and flavors captured in every dish. Each image tells a story of culinary excellence and the passion we put into every creation.</p>
 					</div>
 				</div>
 			</div>

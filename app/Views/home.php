@@ -25,7 +25,7 @@
 				<h2>Today's Menu</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
+						<p>Explore our menu options today and discover delicious dishes tailored to your taste. From appetizing starters to indulgent desserts, we have everything you desire.</p>
 					</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 			<div class="col-md-6 animate-box">
 				<div class="fh5co-heading">
 					<h2>Our Best <em>&amp;</em> Unique Menu</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis!</p>
+					<p>Our Daily Menu: Enjoy our daily specials every day. From fresh seafood to high-quality meat dishes, our daily menu always presents surprises for food enthusiasts.</p>
 				</div>
 			</div>
 			<div class="col-md-6 col-md-push-1 animate-box">
@@ -105,7 +105,7 @@
 		<div class="row animate-box">
 			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 				<h2>Events</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, consequatur. Aliquam quaerat pariatur repellendus veniam nemo, saepe, culpa eius aspernatur cumque suscipit quae nobis illo tempora. Eum veniam necessitatibus, blanditiis facilis quidem dolore! Dolorem, molestiae.</p>
+				<p>Join us for upcoming events that promise memorable moments! From exclusive tasting sessions to themed culinary nights, our events are crafted to elevate your dining experience.</p>
 			</div>
 		</div>
 		<div class="row">

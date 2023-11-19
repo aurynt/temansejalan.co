@@ -7,7 +7,7 @@
 				<h2>Our Delicous Menu</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ab debitis sit itaque totam, a maiores nihil, nulla magnam porro minima officiis! Doloribus aliquam voluptates corporis et tempora consequuntur ipsam, itaque, nesciunt similique commodi omnis. Ad magni perspiciatis, voluptatum repellat.</p>
+						<p>Welcome to our restaurant! Today, indulge in our special dishes that are sure to tantalize your taste buds. Check out our daily menu for an unforgettable culinary experience.</p>
 					</div>
 				</div>
 			</div>

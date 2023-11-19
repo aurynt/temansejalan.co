@@ -86,8 +86,9 @@
 		<div id="fh5co-featured-testimony" class="fh5co-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12 fh5co-heading animate-box">
+					<div class="col-md-8 fh5co-heading animate-box">
 						<h2>Testimony</h2>
+						<p>Our Customers Also Recommend: Read testimonials from satisfied customers about our dishes. Join them and experience the delight of our selected menu."</p>
 					</div>
 					<div class="col-md-5 animate-box img-to-responsive">
 						<img src="<?= base_url('assets/'); ?>images/person_1.jpg" alt="">
@@ -106,7 +107,7 @@
 				<div class="row row-pb-md">
 					<div class="col-md-4 fh5co-widget">
 						<h4>TemanSejalan.co</h4>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+						<p>Kantin yang Lebih Asik, Harga Ramah Kantong. Teman Sejalan.co: #nextlevelkantin</p>
 					</div>
 					<div class="col-md-2 col-md-push-1 fh5co-widget">
 						<h4>Links</h4>
