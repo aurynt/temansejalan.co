@@ -6,9 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title> <?= $active; ?> &mdash; Temansejalan</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
+	<meta name="description" content="Kantin Teman Sejalan" />
+	<meta name="keywords" content="temansejalan, kantin, nextlevelkantin, kantin temansejalan" />
+	<meta name="author" content="Auryncode" />
 	<meta property="og:title" content="" />
 	<meta property="og:image" content="" />
 	<meta property="og:url" content="" />
@@ -18,7 +18,7 @@
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
+	<link rel="shortcut icon" href="icon1.png" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,600i,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 
@@ -54,10 +54,10 @@
 					</div>
 					<div class="col-xs-12 text-center menu-1 menu-wrap">
 						<ul>
-							<li class="<?= $active == 'Home' ? 'active' : ''; ?>"><a href="<?= base_url(); ?>">Home</a></li>
+							<li class="<?= $active == 'Home' ? 'active' : ''; ?>"><a href="<?= base_url(); ?>">Beranda</a></li>
 							<li class="<?= $active == 'Menu' ? 'active' : ''; ?>"><a href="<?= base_url('menus'); ?>">Menu</a></li>
-							<li class="<?= $active == 'Gallery' ? 'active' : ''; ?>"><a href="<?= base_url('gallery'); ?>">Gallery</a></li>
-							<li class="<?= $active == 'About' ? 'active' : ''; ?>"><a href="<?= base_url('about'); ?>">About</a></li>
+							<li class="<?= $active == 'Gallery' ? 'active' : ''; ?>"><a href="<?= base_url('gallery'); ?>">Galeri</a></li>
+							<li class="<?= $active == 'About' ? 'active' : ''; ?>"><a href="<?= base_url('about'); ?>">Tentang Kami</a></li>
 						</ul>
 					</div>
 				</div>
@@ -66,7 +66,7 @@
 			<!-- </div> -->
 		</nav>
 
-		<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url(<?= $setting['image'] !== '' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" data-stellar-background-ratio="0.5">
+		<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url(<?= $setting['image'] !== 'hero_1.jpeg' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row">
@@ -83,7 +83,7 @@
 
 		<?= $this->renderSection('content'); ?>
 
-		<div id="fh5co-featured-testimony" class="fh5co-section">
+		<!-- <div id="fh5co-featured-testimony" class="fh5co-section">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 fh5co-heading animate-box">
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<footer id="fh5co-footer" role="contentinfo" class="fh5co-section">
 			<div class="container">
 				<div class="row row-pb-md">
@@ -120,7 +120,7 @@
 					</div>
 
 					<div class="col-md-6 col-md-push-1 fh5co-widget">
-						<h4>Contact Information</h4>
+						<h4></h4>
 						<ul class="fh5co-footer-links">
 							<li>Jl.Citarum, Manggeh, Tegalgede, Kec. Karanganyar <br> Kabupaten Karanganyar, Jawa Tengah 57714</li>
 							<li><a target="_blank" href="https://wa.me/<?= $setting['whatsapp']; ?>?text=hallo ka barra.. saya mau nanya nanya boleh ngga nih"><?= $setting['whatsapp']; ?></a></li>

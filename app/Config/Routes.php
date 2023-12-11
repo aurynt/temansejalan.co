@@ -59,10 +59,10 @@ $routes->group('', ['filter' => 'authcheck'], function ($routes) {
     $routes->post('/auth/update', 'Auth::update');
     $routes->post('/auth/change-password', 'Auth::updatePassword');
     //setting
-    $routes->post('/setting/update', 'Setting::update');
+    $routes->post('/setting/update', 'Setting::update', ['filter' => 'rootcheck']);
     //experience
-    $routes->post('/exp/add', 'Experience::create');
-    $routes->post('/exp/delete', 'Experience::delete');
+    $routes->post('/exp/add', 'Experience::create', ['filter' => 'rootcheck']);
+    $routes->post('/exp/delete', 'Experience::delete', ['filter' => 'rootcheck']);
 });
 
 //auth

@@ -14,6 +14,7 @@ class Setting extends Seeder
             'facebook' => 'temansejalan.co',
             'whatsapp' => '+6285725082864',
             'email' => 'Kantin.temansejalan@gmail.com',
+            'image' => 'hero_1.jpeg',
         ];
         $this->db->table('setting')->insert($data);
     }

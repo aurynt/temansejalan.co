@@ -5,13 +5,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-pull-4 img-wrap animate-box" data-animate-effect="fadeInLeft">
-				<img src="<?= $setting['image'] !== '' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" alt="Free Restaurant Bootstrap Website Template by FreeHTML5.co">
+				<div style="width: 800px;height: 450px;overflow: hidden;position: relative;">
+					<img class="img-custom" src="<?= $setting['image'] !== 'hero_1.jpeg' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" alt="home image">
+				</div>
 			</div>
 			<div class="col-md-5 col-md-push-1 animate-box">
 				<div class="section-heading">
 					<h2>Kantin TemanSejalan</h2>
 					<p><?= $setting['description']; ?></p>
-					<p><a href="<?= base_url('about'); ?>" class="btn btn-primary btn-outline">Our History</a></p>
+					<p><a href="<?= base_url('about'); ?>" class="btn btn-primary btn-outline">tentang kami</a></p>
 				</div>
 			</div>
 		</div>
@@ -22,10 +24,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 fh5co-heading animate-box">
-				<h2>Today's Menu</h2>
+				<h2>Menu Hari Ini</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Explore our menu options today and discover delicious dishes tailored to your taste. From appetizing starters to indulgent desserts, we have everything you desire.</p>
+						<p>Jelajahi pilihan menu kami hari ini dan temukan hidangan lezat yang disesuaikan dengan selera Anda. Dari hidangan pembuka yang menggugah selera hingga hidangan penutup yang memanjakan, kami memiliki semua yang Anda inginkan.</p>
 					</div>
 				</div>
 			</div>
@@ -39,7 +41,6 @@
 							</div>
 							<h3 class="text-capitalize"><?= $menu['menu']; ?></h3>
 							<span class="fh5co-price"><small>R</small><sub>P.</sub><?= $menu['price']; ?></span>
-							<p><?= $menu['description']; ?></p>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -51,7 +52,6 @@
 							</div>
 							<h3 class="text-capitalize"><?= $menu['menu']; ?></h3>
 							<span class="fh5co-price"><small>R</small><sub>P.</sub><?= $menu['price']; ?></span>
-							<p><?= $menu['description']; ?></p>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -66,8 +66,8 @@
 		<div class="row">
 			<div class="col-md-6 animate-box">
 				<div class="fh5co-heading">
-					<h2>Our Best <em>&amp;</em> Unique Menu</h2>
-					<p>Our Daily Menu: Enjoy our daily specials every day. From fresh seafood to high-quality meat dishes, our daily menu always presents surprises for food enthusiasts.</p>
+					<h2>Menu Unik Kami</h2>
+					<p>Nikmati spesial harian kami setiap hari. Dari hidangan laut segar hingga hidangan daging berkualitas tinggi, menu harian kami selalu menghadirkan kejutan bagi para pecinta kuliner.</p>
 				</div>
 			</div>
 			<div class="col-md-6 col-md-push-1 animate-box">
@@ -104,8 +104,8 @@
 	<div class="container">
 		<div class="row animate-box">
 			<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-				<h2>Events</h2>
-				<p>Join us for upcoming events that promise memorable moments! From exclusive tasting sessions to themed culinary nights, our events are crafted to elevate your dining experience.</p>
+				<h2>Acara</h2>
+				<p>Bergabunglah dengan kami untuk acara mendatang yang menjanjikan momen tak terlupakan! Dari sesi mencicipi eksklusif hingga malam kuliner bertema, acara kami dirancang untuk meningkatkan pengalaman bersantap Anda.</p>
 			</div>
 		</div>
 		<div class="row">

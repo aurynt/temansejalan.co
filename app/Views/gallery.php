@@ -4,10 +4,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 fh5co-heading animate-box">
-				<h2>Our Gallery</h2>
+				<h2>Galeri Kami</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Explore the visual feast in our gallery! Immerse yourself in the vibrant colors and flavors captured in every dish. Each image tells a story of culinary excellence and the passion we put into every creation.</p>
+						<p>Jelajahi pesta visual di galeri kami! Benamkan diri Anda dalam warna-warna cerah dan rasa yang ditangkap di setiap hidangan. Setiap gambar menceritakan kisah keunggulan kuliner dan semangat yang kami berikan pada setiap kreasi.</p>
 					</div>
 				</div>
 			</div>

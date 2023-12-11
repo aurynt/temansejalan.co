@@ -80,7 +80,7 @@ class Menu extends BaseController
             'menu' => 'min_length[3]|required',
             'price' => 'required',
             'description' => 'required_with[slide]',
-            'photo' => 'required|', //ext_in[photo,jpeg,png,jpg]|uploaded[photo]',
+            'photo' => 'required', //ext_in[photo,jpeg,png,jpg]|uploaded[photo]',
         ];
 
         $data = [
@@ -106,7 +106,13 @@ class Menu extends BaseController
     {
         helper('form');
         $id = $this->request->getVar('id');
+        $menu = $this->db->find($id);
+        $image = $menu['photo'];
         $res = $this->db->delete($id);
-        return \redirect()->to('dashboard/menus')->with('succes', 'Succesfuly deleted menu');
+        if ($res) {
+            unlink(ROOTPATH . 'public/assets/uploads/menus/' . $image);
+            return \redirect()->to('dashboard/menus')->with('succes', 'Succesfuly deleted menu');
+        }
+        return \redirect()->to('dashboard/menus')->with('message', 'Delete menu failed');
     }
 }

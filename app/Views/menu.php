@@ -4,10 +4,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 fh5co-heading animate-box">
-				<h2>Our Delicous Menu</h2>
+				<h2>Menu Kami</h2>
 				<div class="row">
 					<div class="col-md-6">
-						<p>Welcome to our restaurant! Today, indulge in our special dishes that are sure to tantalize your taste buds. Check out our daily menu for an unforgettable culinary experience.</p>
+						<p>Selamat datang di restoran kami! Hari ini, nikmati hidangan spesial kami yang pasti akan menggoda selera Anda. Lihatlah menu harian kami untuk pengalaman kuliner yang tak terlupakan.</p>
 					</div>
 				</div>
 			</div>
@@ -21,7 +21,6 @@
 							</div>
 							<h3 class="text-capitalize"><?= $menu['menu']; ?></h3>
 							<span class="fh5co-price"><small>R</small><sub>P.</sub><?= $menu['price']; ?></span>
-							<p><?= $menu['description']; ?></p>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -33,7 +32,6 @@
 							</div>
 							<h3 class="text-capitalize"><?= $menu['menu']; ?></h3>
 							<span class="fh5co-price"><small>R</small><sub>P.</sub><?= $menu['price']; ?></span>
-							<p><?= $menu['description']; ?></p>
 						</div>
 					</div>
 				<?php endif; ?>

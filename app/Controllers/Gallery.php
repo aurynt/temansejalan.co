@@ -82,14 +82,14 @@ class Gallery extends BaseController
     public function delete()
     {
         helper('form');
-        $id = $this->request->getPost('id');
+        $id = $this->request->getVar('id');
+        $gallery = $this->db->find($id);
+        $image = $gallery['image'];
         $res = $this->db->delete($id);
-        return \redirect()->to('dashboard/galleries')->with('succes', 'Succesfuly deleted gallery');
-    }
-    public function all()
-    {
-        helper('form');
-        $res = $this->db->findAll();
-        return $res;
+        if ($res) {
+            unlink(ROOTPATH . 'public/assets/uploads/galleries/' . $image);
+            return \redirect()->to('dashboard/galleries')->with('succes', 'Succesfuly deleted gallery');
+        }
+        return \redirect()->to('dashboard/galleries')->with('message', 'Delete gallery failed');
     }
 }

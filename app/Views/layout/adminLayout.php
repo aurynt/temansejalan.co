@@ -48,7 +48,7 @@
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">format_list_bulleted</i>
                 </div>
-                <span class="nav-link-text ms-1">Table</span>
+                <span class="nav-link-text ms-1">Datas</span>
               </a>
             </div>
           </summary>
@@ -77,7 +77,7 @@
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">table_view</i>
                 </div>
-                <span class="nav-link-text ms-1">Form</span>
+                <span class="nav-link-text ms-1">Forms</span>
               </a>
             </div>
           </summary>
@@ -240,7 +240,7 @@
     new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
+        labels: ["M", "T", "W", "T", "F", "S", "S", "T", "W", "T", "F", "S", "S"],
         datasets: [{
           label: "Sales",
           tension: 0.4,
@@ -250,7 +250,7 @@
           backgroundColor: "rgba(255, 255, 255, .8)",
           maxBarThickness: 6,
           data: <?php
-                $data = [100, 20, 30, 300, 76];
+                $data = [100, 20, 30, 300, 76, 20, 30, 300, 76, 20, 30, 300, 76];
                 echo '[' . implode(', ', $data) . '],';
                 ?>
         }, ],

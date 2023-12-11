@@ -1,5 +1,6 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
+<?php $errors = session()->get('errors'); ?>
 <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
   <span class="mask  bg-gradient-primary  opacity-6"></span>
 </div>
@@ -24,24 +25,24 @@
 
   <div class="row">
     <div class="row">
-      <div class="col-12 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+      <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
         <div class="nav-wrapper position-relative end-0">
           <ul class="nav nav-pills nav-fill p-1" role="tablist">
             <li class="nav-item">
-              <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="#pills-app" role="tab" aria-selected="true">
+              <a class="nav-link text-center mb-0 px-0 py-1 active " data-bs-toggle="tab" href="#pills-app" role="tab" aria-selected="true">
                 <i class="material-icons text-lg position-relative">home</i>
                 <span class="ms-1">App</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="#pills-setting" role="tab" aria-selected="false">
+              <a class="nav-link text-center mb-0 px-0 py-1 " data-bs-toggle="tab" href="#pills-setting" role="tab" aria-selected="false">
                 <i class="material-icons text-lg position-relative">settings</i>
                 <span class="ms-1">Settings</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="#pills-experience" role="tab" aria-selected="false">
-                <i class="material-icons text-lg position-relative">mac_laptop</i>
+                <i class="material-icons text-lg position-relative">laptop</i>
                 <span class="ms-1">Experience</span>
               </a>
             </li>
@@ -91,7 +92,7 @@
                     <div class="form-group mb-3">
                       <label for="exampleInputEmail1">Image</label>
                       <div class="card mb-3" style="width:153px;height: 102px;">
-                        <img style="width:153px;height: 102px;" src="<?= $setting['image'] !== '' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/hero_1.jpeg'); ?>" class="rounded" alt="<?= $setting['image']; ?>">
+                        <img style="width:153px;height: 102px;" src="<?= $setting['image'] !== 'hero_1.jpeg' ? base_url('assets/uploads/') . $setting['image'] : base_url('assets/images/') . $setting['image'] ?>" class="rounded" alt="<?= $setting['image']; ?>">
                       </div>
                       <input accept="image/*" value="<?= old('image'); ?>" name="image" type="file" class="form-control border border-primary px-4 p-2">
                       <small class="form-text text-danger"><?= $errors['image'] ?? ''; ?></small>

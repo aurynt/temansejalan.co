@@ -39,7 +39,7 @@ class Setting extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    protected function addToActivityUpdate(array $data)
+    protected function addToActivityUpdate()
     {
         date_default_timezone_set('Asia/Jakarta');
         $db = new ActivityModel;

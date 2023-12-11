@@ -1,6 +1,11 @@
 <?= $this->extend('layout/adminLayout'); ?>
 <?= $this->section('content'); ?>
 <?php $errors = session()->get('errors'); ?>
+<?php if (session()->getFlashdata('succes')) : ?>
+  <div id="alert" class="alert alert-success text-white" role="alert">
+    <?= session()->getFlashdata('succes'); ?>
+  </div>
+<?php endif; ?>
 <div class="row">
   <div class="col-12">
     <div class="card my-4">

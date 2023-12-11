@@ -25,7 +25,7 @@
 *
 * ======================================================= */
 body {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "coolvetica", Georgia, serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.7;
@@ -134,6 +134,9 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media screen and (max-width: 480px) {
   .fh5co-nav {
@@ -159,7 +162,7 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   padding: 0;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-family: "coolvetica-bold", Georgia, serif;
   color: #fff !important;
 }
@@ -177,6 +180,11 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #ea272d;
 }
 @media screen and (max-width: 768px) {
+  .fh5co-nav #fh5co-logo a{
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: "coolvetica", Georgia, serif;
+  }
   .fh5co-nav .menu-1 {
     display: none;
   }
@@ -726,7 +734,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 #fh5co-slider-wrwap .flexslider .slider-text > .slider-text-inner,
 #fh5co-slider-wrwap .flexslider .slider-text-bg > .slider-text-inner {
-  display: table-cell;
+  display: table-cell; 
   vertical-align: middle;
   min-height: 500px;
 }

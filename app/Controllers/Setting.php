@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Setting as ModelsSetting;
-use App\Models\ActivityMOdel;
 
 class Setting extends BaseController
 {
@@ -29,8 +28,7 @@ class Setting extends BaseController
         }
         $rule = [
             'description' => 'required',
-            'whatsapp' => 'required',
-            'image' => 'required',
+            'whatsapp' => 'required', //w-800 h-450
             'email' => 'required|valid_email',
         ];
 
@@ -48,7 +46,6 @@ class Setting extends BaseController
             return \redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
         $this->db->save($data);
-        $photo->move(ROOTPATH . 'public/assets/uploads', $name);
         return \redirect()->back()->with('message', 'succes update app profile');
     }
 }

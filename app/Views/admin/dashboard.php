@@ -4,9 +4,11 @@
   <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
     <div class="card">
       <div class="card-header p-3 pt-2">
-        <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-          <i class="material-icons opacity-10">restaurant</i>
-        </div>
+        <a href="<?= base_url('dashboard/menus'); ?>">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">restaurant</i>
+          </div>
+        </a>
         <div class="text-end pt-1">
           <p class="text-sm mb-0 text-capitalize">menus</p>
           <h4 class="mb-0"><?= $menus; ?></h4>
@@ -20,9 +22,11 @@
   <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
     <div class="card">
       <div class="card-header p-3 pt-2">
-        <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-          <i class="material-icons opacity-10">collections</i>
-        </div>
+        <a href="<?= base_url('dashboard/galleries'); ?>">
+          <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">collections</i>
+          </div>
+        </a>
         <div class="text-end pt-1">
           <p class="text-sm mb-0 text-capitalize">galleries</p>
           <h4 class="mb-0"><?= $galleries; ?></h4>
@@ -36,13 +40,13 @@
   <div class="col-xl-4 col-sm-6">
     <div class="card">
       <div class="card-header p-3 pt-2">
-        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-          <i class="material-icons opacity-10">history</i>
-        </div>
-        <div class="text-end pt-1">
-          <a href="<?= base_url('dashboard/activities'); ?>">
-            <p class="text-sm mb-0 text-capitalize">activity</p>
+        <a href="<?= base_url('dashboard/activities'); ?>">
+          <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">history</i>
+          </div>
         </a>
+        <div class="text-end pt-1">
+          <p class="text-sm mb-0 text-capitalize">activity</p>
           <h4 class="mb-0"><?= $activity; ?></h4>
         </div>
       </div>
@@ -52,7 +56,7 @@
     </div>
   </div>
 </div>
-<div class="row mt-4">
+<!-- <div class="row mt-4">
   <div class="col-lg-4 col-md-6 mt-4 mb-4">
     <div class="card z-index-2 ">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
@@ -113,5 +117,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>

@@ -45,7 +45,7 @@ class Auth extends BaseController
             }
             return redirect()->back()->with('succes', 'succesfuly created account');
         } else {
-            \session()->setFlashdata('message', 'Password do not match', 2);
+            \session()->setFlashdata('message', 'Password do not match');
             return redirect()->back()->withInput();
         }
     }
